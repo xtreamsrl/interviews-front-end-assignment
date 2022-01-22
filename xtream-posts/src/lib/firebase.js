@@ -1,22 +1,18 @@
-import { firebase } from "firebase";
 import { initializeApp } from "firebase/app";
 import "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGIND_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID,
+  apiKey: "AIzaSyDJjcAICWGklxv6LZgnVy7cUcTv-I2YtJQ",
+  authDomain: "xtream-posts.firebaseapp.com",
+  projectId: "xtream-posts",
+  storageBucket: "xtream-posts.appspot.com",
+  messagingSenderId: "615886974186",
+  appId: "1:615886974186:web:6ccaad0c313ccf37d67b93",
 };
 
-var app;
 //If there's more than one app connected it will throw an error.
-if (!firebase.apps.length) {
-  app = initializeApp(firebaseConfig);
-}
+const app = initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+export const db = getFirestore(app);
