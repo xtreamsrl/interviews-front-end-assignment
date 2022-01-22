@@ -5,11 +5,15 @@ import { db } from "../../lib/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
 export default function Post({ id, title, body }) {
+  const [updating, setUpdating] = useState(false);
+  const update = () => setUpdating(true);
+
   return (
     <li className={style["post-card"]} key={id}>
       <h1>{capitalizeFirstLetter(title)}</h1>
       <h2>{capitalizeFirstLetter(body)}</h2>
-      <UpdateTitle id={id} />
+      {!updating && <button onClick={update}>Edit</button>}
+      {updating && <UpdateTitle id={id} />}
     </li>
   );
 }
@@ -23,7 +27,6 @@ export const UpdateTitle = ({ id }) => {
     const newPost = { title: updatedTitle, body: updatedBody };
     await updateDoc(postDoc, newPost);
     window.location.reload();
-    console.log(newPost, "<<<NEW POST");
   };
 
   const handleUpdatedTitle = (e) => {
