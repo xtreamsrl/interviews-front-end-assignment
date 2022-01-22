@@ -6,6 +6,7 @@
   border-radius: 15px;
   margin: 5rem auto;
   padding: 1rem;
+  overflow: scroll;
 }
 
 .unordered-list li {
