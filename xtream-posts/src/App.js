@@ -8,8 +8,10 @@ import AddPost from "./components/AddPost";
 function App() {
   const [posts, setPosts] = useState([]);
 
+  //Reference to the "posts" collection hosted on Firestore
   const postsCollectionRef = collection(db, "posts");
 
+  //Fetching data from the database
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(postsCollectionRef);
