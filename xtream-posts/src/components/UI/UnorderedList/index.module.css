@@ -1,14 +1,14 @@
 .unordered-list {
   height: 90vh;
-  width: 90%;
-  background: #14192a;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.6);
-  border-radius: 15px;
-  margin: 5rem auto;
-  padding: 1rem;
+  width: 93%;
   overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 2rem;
 }
 
 .unordered-list li {
-  margin: 1rem 0;
+  max-height: 15rem;
+  overflow: scroll;
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { addDoc } from "firebase/firestore";
+import style from "./index.module.css";
 
 export default function AddPost({ dbRef }) {
   const [title, setTitle] = useState("");
@@ -19,9 +20,15 @@ export default function AddPost({ dbRef }) {
   };
   return (
     <>
-      <input placeholder="Title" onChange={handleTitleChange} />
-      <input placeholder="Body" onChange={handleBodyChange} />
-      <button onClick={addPost}>Post</button>
+      <div className={style["create-post-wrapper"]}>
+        <div className={style["inputs-wrapper"]}>
+          <input placeholder="Title" onChange={handleTitleChange} />
+          <input placeholder="Body" onChange={handleBodyChange} />
+          <button className={style["post-button"]} onClick={addPost}>
+            Post
+          </button>
+        </div>
+      </div>
     </>
   );
 }
