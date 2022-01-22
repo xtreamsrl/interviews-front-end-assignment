@@ -12,9 +12,15 @@ export default function Post({ id, title, body }) {
     <li className={style["post-card"]} key={id}>
       <h1>{capitalizeFirstLetter(title)}</h1>
       <h2>{capitalizeFirstLetter(body)}</h2>
-      {!updating && <button onClick={update}>Edit</button>}
-      {updating && <UpdatePost id={id} />}
-      <DeletePost id={id} />
+      <div className={style["btns-wrapper"]}>
+        {!updating && (
+          <button className={style["edit-btn"]} onClick={update}>
+            Edit
+          </button>
+        )}
+        {updating && <UpdatePost id={id} />}
+        <DeletePost id={id} />
+      </div>
     </li>
   );
 }
@@ -39,9 +45,11 @@ export const UpdatePost = ({ id }) => {
   };
   return (
     <>
-      <input placeholder="Update Title" onChange={handleUpdatedTitle} />
-      <input placeholder="Update Body" onChange={handleUpdatedBody} />
-      <button onClick={() => updatePost(id)}>Update</button>
+      <div className={style["update-form"]}>
+        <input placeholder="Update Title" onChange={handleUpdatedTitle} />
+        <input placeholder="Update Body" onChange={handleUpdatedBody} />
+        <button onClick={() => updatePost(id)}>Update</button>
+      </div>
     </>
   );
 };
@@ -53,5 +61,9 @@ export const DeletePost = ({ id }) => {
     window.location.reload();
   };
 
-  return <button onClick={() => deletePost(id)}>Delete Post</button>;
+  return (
+    <button className={style["delete-btn"]} onClick={() => deletePost(id)}>
+      Delete Post
+    </button>
+  );
 };
