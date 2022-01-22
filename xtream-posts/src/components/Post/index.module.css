@@ -65,3 +65,9 @@
   cursor: pointer;
   margin-bottom: 0.5rem;
 }
+
+@media screen and (max-width: 1000px) {
+  .btns-wrapper {
+    width: 75%;
+  }
+}
