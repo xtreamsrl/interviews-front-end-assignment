@@ -7,6 +7,16 @@
   display: flex;
   align-items: center;
   align-self: center;
+  animation: pop-up 0.3s ease-in;
+}
+
+@keyframes pop-up {
+  0% {
+    transform: translateY(1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .inputs-wrapper {
