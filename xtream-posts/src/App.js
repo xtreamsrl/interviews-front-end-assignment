@@ -2,7 +2,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "./lib/firebase";
 import Post from "./components/Post";
-
+import UnorderedList from "./components/UI/UnorderedList";
 function App() {
   const [posts, setPosts] = useState([]);
 
@@ -16,12 +16,12 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <UnorderedList>
       {posts.map((post) => {
         const { body, title, id } = post;
         return <Post id={id} title={title} body={body} />;
       })}
-    </div>
+    </UnorderedList>
   );
 }
 
