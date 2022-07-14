@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    max-width: 100vw;
+}
+/* --- MAIN --- */
+#root {
+    height: 100vh;
+    max-width: 100vw;
+
+}
+#root > div {
+    margin-bottom: 3em;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    break-inside: avoid;
+}
+.dropdown-menu li {
+    font-size: .9em;
+    font-weight: 900;
+    padding: .5rem;
+    transition: .2s;
+}
+.dropdown-menu li:hover {
+    background-color: #1363DF;
+    color: #e8e8e8;
+    cursor: pointer;
+    transition: .2s;
+}
+/* --- COMMENTS ANIMATION --- */
+.goUp {
+    display: inline-flex;
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+    transition: .1s ease-in-out;
+}
+.initial {
+    display: inline-flex;
+    opacity: 1;
+    transform: translate3d(0, 0px, 0);
+    transition: .1s ease-in-out;
+}
