@@ -85,4 +85,10 @@ The requirements for this challenge are the exact same requirements of the Front
 
 --- 
 # How to run
-...
+This project was developed with React:
+* Clone the repository
+* Open the repository in the command prompt
+* Type "npm start"
+
+
+![A capybara picture, as requested](https://images.unsplash.com/photo-1595017013941-cab3d4c8d02f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
