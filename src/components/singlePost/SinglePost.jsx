@@ -1,34 +1,59 @@
-import { useDispatch } from 'react-redux';
-import { postAction } from '../../store/slice/slicePost';
-
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import styles from './SinglePost.module.scss';
 
-const SinglePost = ({ title, id, body }) => {
-  const dispatch = useDispatch();
+import { doc, getDoc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
-  const removeHandler = () => {
-    dispatch(postAction.deleteFavouritePost(id));
-    toast.success('Post removed successfully');
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { db } from '../../firebase/config';
+import { BsArrowLeft } from 'react-icons/bs';
+import Loader from '../loader/Loader';
+
+const SinglePost = () => {
+  const { id } = useParams();
+
+  const [post, setPost] = useState(false);
+
+  const getPost = async () => {
+    const docRef = doc(db, 'posts', id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const obj = {
+        id: id,
+        ...docSnap.data(),
+      };
+      setPost(obj);
+    } else {
+      toast.error('Post not found.');
+    }
   };
 
-  return (
-    <div className={styles.container_post}>
-      <div className={styles.card}>
-        <div className={styles.title_body}>
-          <h2>{title}</h2>
-          <h3>{body}</h3>
-        </div>
+  useEffect(() => {
+    getPost();
+  }, []);
 
-        <div className={styles.card_btn_info}>
-          <button className={styles.btn} onClick={removeHandler}>
-            Remove
-          </button>
-        </div>
+  return (
+    <section>
+      <div className={styles.backhome}>
+        <BsArrowLeft size={22} />
+        <p>
+          <a href='/posts'>Back Home</a>{' '}
+        </p>
       </div>
-    </div>
+
+      {post === false ? (
+        <Loader />
+      ) : (
+        <div className={styles.container_post}>
+          <div className={styles.card}>
+            <h3 className={styles.title_body}>{post.name}</h3>
+            <h4 className={styles.title_body}>{post.body}</h4>
+            <h4 className={styles.title_body}>{post.email}</h4>
+          </div>
+        </div>
+      )}
+    </section>
   );
 };
 

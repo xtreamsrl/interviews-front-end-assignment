@@ -2,8 +2,15 @@
 
 .container_post {
   padding: 2rem;
-  max-width: 900px;
+  max-width: 600px;
   margin: auto;
+}
+
+.title {
+  text-align: center;
+  margin: 2rem auto;
+  text-transform: uppercase;
+  font-size: index.$h2;
 }
 
 .card {
@@ -12,35 +19,38 @@
   border-radius: 10px;
   box-shadow: index.$shadow;
 
+  h4 {
+    margin: 1rem 0;
+  }
+
   .title_body {
     text-align: left;
-
-    h2 {
-      font-size: index.$h2;
-      font-family: index.$font-h2;
-      margin: 3rem auto;
-    }
+    font-family: index.$font-h3;
+    font-weight: 500;
   }
 
-  .card_btn_info {
-    margin: 3rem auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  // .card_btn_info {
+  //   border: 2px solid red;
+  //   margin: 3rem auto;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+
+  // button {
+  //   background-color: index.$primary-color;
+  //   color: index.$white-color;
+  //   border: none;
+  //   padding: 1rem 1.5rem;
+  //   width: 150px;
+  //   border-radius: 8px;
+  //   font-weight: bold;
+  //   font-size: index.$p;
+  //   cursor: pointer;
+  // }
 }
 
 .btn {
   margin-top: 2rem;
-  background-color: index.$primary-color;
-  color: index.$white-color;
-  border: none;
-  padding: 1rem 1.5rem;
-  width: 150px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: index.$p;
-  cursor: pointer;
 
   @media screen and (max-width: 500px) {
     display: flex;
@@ -49,9 +59,20 @@
   }
 }
 
-.btn:hover {
-  background-color: index.$active-color;
-  color: index.$primary-color;
+// button:hover {
+//   background-color: index.$active-color;
+//   color: index.$primary-color;
+// }
+
+.backhome {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  padding-left: 3rem;
+
+  @media screen and (max-width: 500px) {
+    padding-left: 1rem;
+  }
 }
 
 @media screen and (max-width: 500px) {
