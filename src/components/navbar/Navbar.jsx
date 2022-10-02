@@ -6,18 +6,21 @@ import { useSelector } from 'react-redux';
 import styles from './Navbar.module.scss';
 import { FiXCircle } from 'react-icons/fi';
 import { FaBars } from 'react-icons/fa';
-import { selectTotalQuantity } from '../../store/slice/slicePost';
+import { selectPostFavourite } from '../../store/slice/favouriteSlice';
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
+
+  const post = useSelector(selectPostFavourite);
+  const item = post.map((q) => q.totalQuantity);
+
+  const totalQuantity = item.length;
 
   const handlemenu = () => {
     setIsMobile(!isMobile);
   };
 
   const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : '');
-
-  const totalQuantity = useSelector(selectTotalQuantity);
 
   return (
     <div className={styles.container}>
@@ -27,7 +30,15 @@ const Navbar = () => {
         </a>
 
         <ul className={isMobile ? `${styles['nav-links-mobile']}` : `${styles.links}`}>
-          <NavLink to='/add-post' className={activeLink}>
+          <a href='/'>
+            <li>Resume</li>
+          </a>
+
+          <NavLink to='/posts/' className={activeLink}>
+            <li>Posts</li>
+          </NavLink>
+
+          <NavLink to='/add-post/ADD' className={activeLink}>
             <li>Add Post</li>
           </NavLink>
 
