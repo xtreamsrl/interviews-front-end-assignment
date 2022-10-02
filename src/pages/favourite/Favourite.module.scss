@@ -1,0 +1,46 @@
+@use '../../index';
+
+.container {
+  max-width: 1024;
+  margin: 4rem auto;
+
+  h1 {
+    text-align: center;
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    font-family: index.$font-h1;
+    font-size: index.$h1;
+  }
+
+  .backhome {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 3rem;
+
+    svg {
+      margin-right: 10px;
+    }
+    a {
+      color: index.$primary-color;
+      text-decoration: underline;
+    }
+
+    p:hover {
+      scale: 1.1;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 500px) {
+      padding-left: 1rem;
+    }
+  }
+}
+
+.info {
+  text-align: center;
+  margin-top: 6rem;
+  font-size: index.$h4;
+  font-family: index.$font-h4;
+}

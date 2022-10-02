@@ -1,0 +1,29 @@
+@use '../../index';
+
+.container {
+  max-width: 1024px;
+  margin: 4rem auto;
+
+  h1 {
+    font-size: 34px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    h2,
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
+.posts {
+  max-width: 1000px;
+  padding: 2rem;
+  border-radius: 6px;
+  margin: 2rem auto;
+  background-color: index.$white-color;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}

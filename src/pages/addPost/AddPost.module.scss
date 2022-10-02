@@ -1,0 +1,89 @@
+@use '../../index';
+
+.container {
+  max-width: 1024;
+  margin: 1rem auto;
+
+  h1 {
+    text-align: center;
+    padding-top: 4rem;
+    text-transform: uppercase;
+    font-family: index.$font-h1;
+    font-size: index.$h1;
+  }
+
+  .backhome {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 3rem;
+
+    svg {
+      margin-right: 10px;
+    }
+    a {
+      color: index.$primary-color;
+      text-decoration: underline;
+    }
+
+    p:hover {
+      scale: 1.1;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 500px) {
+      padding-left: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 80%;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  margin: 3rem auto;
+
+  label {
+    font-size: index.$p;
+    font-weight: bold;
+    margin: 0.4rem 0;
+  }
+
+  input {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    border: 2px solid index.$primary-color;
+    font-size: index.$p;
+  }
+
+  textarea {
+    padding: 1rem;
+    font-size: index.$p;
+    border-radius: 8px;
+    border: 2px solid index.$primary-color;
+  }
+
+  button {
+    margin-top: 2rem;
+  }
+
+  .btn {
+    padding: 1rem 1.5rem;
+    border: none;
+    background-color: index.$primary-color;
+    color: index.$white-color;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 20px;
+  }
+
+  .btn:hover {
+    background-color: index.$active-color;
+    color: index.$primary-color;
+  }
+}
