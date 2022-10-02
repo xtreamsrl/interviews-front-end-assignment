@@ -1,0 +1,90 @@
+@use '../../index';
+
+.close_icon {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close_icon svg:hover {
+  scale: 1.2;
+}
+
+.title {
+  margin: 2rem 0;
+}
+
+h3 {
+  font-size: index.$font-h3;
+  font-weight: normal;
+  font-family: index.$font-h3;
+}
+
+.body {
+  margin-bottom: 4rem;
+
+  p {
+    font-size: index.$font-p;
+    font-family: index.$font-p;
+  }
+
+  .data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3rem;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      color: index.$primary-color;
+      background-color: transparent;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+
+      svg {
+        margin-bottom: 1rem;
+      }
+
+      span {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.edit_icon {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+
+  svg {
+    width: 30px;
+    height: 30px;
+    color: index.$primary-color;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+
+  svg:hover {
+    scale: 1.2;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}

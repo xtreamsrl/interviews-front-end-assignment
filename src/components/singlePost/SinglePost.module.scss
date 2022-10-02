@@ -1,0 +1,62 @@
+@use '../../index';
+
+.container_post {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  padding: 2rem 3rem;
+  background-color: index.$white-color;
+  border-radius: 10px;
+  box-shadow: index.$shadow;
+
+  .title_body {
+    text-align: left;
+
+    h2 {
+      font-size: index.$h2;
+      font-family: index.$font-h2;
+      margin: 3rem auto;
+    }
+  }
+
+  .card_btn_info {
+    margin: 3rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.btn {
+  margin-top: 2rem;
+  background-color: index.$primary-color;
+  color: index.$white-color;
+  border: none;
+  padding: 1rem 1.5rem;
+  width: 150px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: index.$p;
+  cursor: pointer;
+
+  @media screen and (max-width: 500px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.btn:hover {
+  background-color: index.$active-color;
+  color: index.$primary-color;
+}
+
+@media screen and (max-width: 500px) {
+  .title_body h2,
+  h3 {
+    text-align: center;
+  }
+}

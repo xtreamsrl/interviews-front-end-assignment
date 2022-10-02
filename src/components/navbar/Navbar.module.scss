@@ -1,0 +1,125 @@
+@use '../../index';
+
+.container {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  margin: auto;
+  background-color: index.$primary-color;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+  width: 90%;
+  margin: auto;
+  color: #fff;
+  box-shadow: index.$shadow;
+}
+
+.logo {
+  font-size: index.$logo;
+  font-weight: bold;
+  color: index.$white-color;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  width: 75%;
+}
+
+nav ul {
+  li {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    font-size: index.$li;
+    padding: 0 20px;
+    cursor: pointer;
+  }
+
+  li:hover {
+    color: index.$active-color;
+  }
+  li a:hover {
+    color: index.$active-color;
+  }
+
+  a {
+    margin: 10px 0;
+    text-align: center;
+    color: #fff;
+    font-size: index.$li;
+  }
+}
+
+.mobile-menu-icon {
+  display: none;
+}
+
+.active li {
+  cursor: pointer;
+  color: index.$active-color;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    left: 35px;
+  }
+
+  .links {
+    display: none;
+  }
+
+  .nav-links-mobile {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: index.$primary-color;
+    left: 0;
+    top: 75px;
+    transition: all 0.5s ease-out;
+
+    a {
+      margin: 10px 0;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    a:nth-last-child(1) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .active li {
+    color: index.$active-color;
+    font-weight: bold;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+    position: absolute;
+    font-size: 30px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    top: 27px;
+    right: 55px;
+    transform: translate(50%, -50%);
+    padding: 0.1rem;
+  }
+
+  .mobile-menu-icon:hover {
+    background-color: none !important;
+  }
+}

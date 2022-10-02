@@ -1,0 +1,19 @@
+@use '../../index';
+
+.container {
+  max-width: 900px;
+  display: flex;
+  background-color: index.$white-color;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem auto;
+  padding: 4rem;
+  border-radius: 8px;
+
+  h2 {
+    font-size: index.$h2;
+    color: index.$primary-color;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}

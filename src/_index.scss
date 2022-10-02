@@ -1,0 +1,44 @@
+// FONT TYPE GOOGLE FONTS
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@200;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lora', serif;
+  outline: none;
+  scroll-behavior: smooth;
+  width: 100wv;
+
+  a {
+    text-decoration: none;
+  }
+
+  body {
+    background-color: #f6f6f6;
+  }
+}
+
+// Font Variables
+$font-h1: 'Lora', serif;
+$font-h2: 'Lora', serif;
+$font-h3: 'Poppins', sans-serif;
+$font-h4: 'Poppins', sans-serif;
+$font-p: 'Poppins', sans-serif;
+
+$primary-color: #14213d;
+$bg-body: #f6f6f6;
+$active-color: #fca311;
+$white-color: #ffffff;
+
+//Typography Variables
+$logo: 30px;
+$h1: 32px;
+$h2: 28px;
+$h3: 25px;
+$h4: 22px;
+$p: 20px;
+$li: 20px;
+
+//Utilities
+$shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
