@@ -1,29 +1,59 @@
 @use '../../index';
 
-.container {
-  max-width: 1024px;
+h2 {
+  text-align: center;
   margin: 4rem auto;
-
-  h1 {
-    font-size: 34px;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 90%;
-    h2,
-    h3 {
-      text-align: center;
-    }
-  }
+  text-transform: uppercase;
+  font-family: index.$font-h2;
+  font-size: index.$h1;
 }
 
-.posts {
-  max-width: 1000px;
-  padding: 2rem;
-  border-radius: 6px;
+.table {
+  padding: 5px;
+  max-width: 90vw;
+  overflow-x: auto;
   margin: 2rem auto;
-  background-color: index.$white-color;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  .search {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.4rem;
+
+    thead {
+      border-top: 2px solid index.$primary-color;
+      border-bottom: 2px solid index.$primary-color;
+    }
+
+    th {
+      border: 1px solid #eee;
+    }
+
+    th,
+    td {
+      vertical-align: top;
+      text-align: left;
+      font-family: index.$font-p;
+      padding: 23px;
+
+      &.icons {
+        > * {
+          margin-right: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    tr {
+      border-bottom: 1px solid #ccc;
+    }
+
+    tr:nth-child(even) {
+      background-color: index.$white-color;
+    }
+  }
 }
