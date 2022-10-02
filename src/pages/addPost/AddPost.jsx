@@ -1,95 +1,156 @@
 import { useState } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { addDoc, setDoc, doc, collection, Timestamp } from 'firebase/firestore';
+import { db } from '../../firebase/config';
 
-import { useDispatch } from 'react-redux';
-import { postAction } from '../../store/slice/slicePost';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+import { selectPosts } from '../../store/slice/postSlice';
+import { useSelector } from 'react-redux';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { nanoid } from '@reduxjs/toolkit';
 
 import styles from './AddPost.module.scss';
 import { BsArrowLeft } from 'react-icons/bs';
 
-const AddPost = () => {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+import { Loader } from '../../components';
 
-  const dispatch = useDispatch();
+const AddPost = () => {
+  const { id } = useParams();
+
+  const initialState = {
+    name: '',
+    body: '',
+    email: '',
+  };
+
+  const posts = useSelector(selectPosts);
+  const postEdit = posts.find((item) => item.id === id);
+
+  const [post, setPost] = useState(() => {
+    const newState = detectForm(id, { ...initialState }, postEdit);
+    return newState;
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
-  const newPost = {
-    title: title,
-    body: body,
-    id: nanoid(),
-    comment: '',
-    date: new Date().toISOString(),
-  };
-
-  const addNewPost = () => {
-    const post = { ...newPost };
-    dispatch(postAction.postAdd(post));
-    toast.success('Post Added with Successfully!');
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!title && !body) {
-      return;
+  function detectForm(id, f1, f2) {
+    if (id === 'ADD') {
+      return f1;
     }
-    addNewPost(title, body);
+    return f2;
+  }
 
-    setTitle('');
-    setBody('');
-    navigate('/');
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPost({ ...post, [name]: value });
   };
+
+  const addPost = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const docRef = addDoc(collection(db, 'posts'), {
+        name: post.name,
+        body: post.body,
+        email: post.email,
+        createdAt: Timestamp.now().toDate(),
+      });
+      setIsLoading(false);
+      setPost({ ...initialState });
+      toast.success('Post added successfully.');
+
+      navigate('/');
+    } catch (error) {
+      setIsLoading(false);
+      toast.error(error.message);
+    }
+  };
+
+  const editPost = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      setDoc(doc(db, 'posts', id), {
+        name: post.name,
+        email: post.email,
+        body: post.body,
+        createdAt: postEdit.createdAt,
+        editedAt: Timestamp.now().toDate(),
+      });
+
+      setIsLoading(false);
+      toast.success('Product Edited Successfully');
+      navigate('/');
+    } catch (error) {
+      setIsLoading(false);
+      toast.error(error.message);
+    }
+  };
+
+  ////////////////////////////////////////////
 
   return (
-    <div className={styles.container}>
-      <div className={styles.backhome}>
-        <BsArrowLeft size={22} />
-        <p>
-          <a href='/'>Back Home</a>{' '}
-        </p>
+    <>
+      {isLoading && <Loader />}
+      <div className={styles.container}>
+        <div className={styles.backhome}>
+          <BsArrowLeft size={22} />
+          <p>
+            <a href='/'>Back Home</a>{' '}
+          </p>
+        </div>
+
+        <h1>{detectForm(id, 'Add New Post', 'Edit Post')}</h1>
+
+        <div>
+          <form className={styles.form} onSubmit={detectForm(id, addPost, editPost)}>
+            <label htmlFor='addTitle'>Post Title</label>
+
+            <input
+              type='text'
+              placeholder='Post title'
+              name='name'
+              value={post.name}
+              onChange={(e) => handleInputChange(e)}
+            />
+
+            <label htmlFor='addEmail'>E-mail</label>
+            <input
+              type='text'
+              name='email'
+              placeholder='Add Email'
+              // required
+              value={post.email}
+              onChange={(e) => handleInputChange(e)}
+            />
+
+            <label htmlFor='text' name='body'>
+              Text
+            </label>
+
+            <textarea
+              name='body'
+              cols='30'
+              rows='10'
+              placeholder='Write your post...'
+              value={post.body}
+              onChange={(e) => handleInputChange(e)}
+            ></textarea>
+
+            <button className={styles.btn} type='submit' aria-label='Add Post'>
+              {detectForm(id, 'Add Post', 'Edit Post')}
+            </button>
+          </form>
+        </div>
       </div>
-
-      <h1>Add post</h1>
-
-      <div>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <label htmlFor='addTitle'>Title</label>
-
-          <input
-            autoFocus
-            type='text'
-            name='title'
-            placeholder='Add Title'
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-
-          <label htmlFor='text' name='body'>
-            Text
-          </label>
-
-          <textarea
-            name='body'
-            cols='30'
-            rows='10'
-            placeholder='Write your post...'
-            required
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          ></textarea>
-
-          <button className={styles.btn} type='submit' aria-label='Add Post'>
-            Add Post
-          </button>
-        </form>
-      </div>
-    </div>
+    </>
   );
 };
 

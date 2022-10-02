@@ -35,10 +35,6 @@
       padding-left: 1rem;
     }
   }
-
-  @media screen and (max-width: 500px) {
-    width: 80%;
-  }
 }
 
 .form {
@@ -68,22 +64,19 @@
     border: 2px solid index.$primary-color;
   }
 
-  button {
-    margin-top: 2rem;
-  }
-
   .btn {
     padding: 1rem 1.5rem;
-    border: none;
+    margin-top: 2rem;
     background-color: index.$primary-color;
     color: index.$white-color;
     font-weight: bold;
+    font-size: 16px;
+    border: none;
     border-radius: 8px;
-    font-size: 20px;
+    transition: all 0.5s ease;
   }
 
   .btn:hover {
-    background-color: index.$active-color;
-    color: index.$primary-color;
+    scale: 1.1;
   }
 }
