@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { Navbar, Posts } from './components/index';
+import { Navbar, Posts, SinglePost } from './components/index';
 import AddPost from './pages/addPost/AddPost';
-import { Home, Favourite, EditPost } from './pages/index';
+import { Home, Favourite } from './pages/index';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -15,11 +15,11 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
 
-        <Route path='post/' element={<Posts />} />
+        <Route path='/posts' element={<Posts />} />
 
-        <Route path='add-post/' element={<AddPost />} />
+        <Route path='add-post/:id' element={<AddPost />} />
 
-        <Route path='edit/:id' element={<EditPost />} />
+        <Route path='/single-post/:id' element={<SinglePost />} />
 
         <Route path='/favourite' element={<Favourite />} />
       </Routes>
