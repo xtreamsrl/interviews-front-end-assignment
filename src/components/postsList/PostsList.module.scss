@@ -1,0 +1,33 @@
+@use '../../index';
+
+.container {
+  max-width: 1024px;
+  margin: auto;
+  align-items: center;
+  padding: 1rem;
+}
+
+.posts-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .info {
+      font-size: index.$h3;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.grid {
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #fffdf7;
+}
