@@ -1,43 +1,61 @@
-import { useSelector } from 'react-redux';
-import { selectFavouritePosts } from '../../store/slice/slicePost';
+import { useDispatch, useSelector } from 'react-redux';
+// import { selectFavouritePosts } from '../../store/slice/postSlice';
 
-import { SinglePost } from '../../components';
 import { BsArrowLeft } from 'react-icons/bs';
 
 import styles from './Favourite.module.scss';
 
+import {
+  removeFvouritePost,
+  selectPostFavourite,
+  selectTotalFavourite,
+} from '../../store/slice/favouriteSlice';
+
 const Favourite = () => {
-  const posts = useSelector(selectFavouritePosts);
+  const posts = useSelector(selectPostFavourite);
+  const quantity = useSelector(selectTotalFavourite);
+
   console.log(posts);
+
+  const dispatch = useDispatch();
+
+  const removePost = (post) => {
+    dispatch(removeFvouritePost(post));
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.backhome}>
         <BsArrowLeft size={22} />
         <p>
-          <a href='/'>Back Home</a>{' '}
+          <a href='/posts'>Back Home</a>{' '}
         </p>
       </div>
 
-      <h1>My Favourite posts</h1>
+      <div className={styles.section}>
+        {posts.length === 0 ? (
+          <p className={styles.not_found}>No post saved.</p>
+        ) : (
+          <>
+            {posts.map((post) => {
+              const { name, body, email, id } = post;
+              return (
+                <div className={styles.card} key={id}>
+                  <h2>{name}</h2>
+                  <h4>{body}</h4>
+                  <p>{email}</p>
 
-      {posts.length === 0 ? (
-        <div className={styles.info}>
-          <p>No Posts saved.</p>
-        </div>
-      ) : (
-        <div>
-          {posts.map((post) => (
-            <SinglePost
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              body={post.body}
-              userId={post.userId}
-            />
-          ))}
-        </div>
-      )}
+                  <div>
+                    <button className={styles.btn} onClick={() => removePost(post)}>
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </>
+        )}
+      </div>
     </div>
   );
 };
