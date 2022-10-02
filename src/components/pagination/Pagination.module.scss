@@ -27,9 +27,11 @@
   }
   p {
     margin-left: 1rem;
+    .page {
+      color: index.$primary-color;
+    }
   }
 }
-
 .active {
   background-color: index.$primary-color;
   color: #fff;

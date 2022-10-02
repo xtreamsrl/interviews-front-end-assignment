@@ -6,10 +6,10 @@ const Pagination = ({ currentPage, setCurrentPage, postPerPage, totalPosts }) =>
   const pageNumbers = [];
   const totalPages = totalPosts / postPerPage;
 
-  //limit the page Numbers shown
-  const [pageNumberlimit] = useState(5);
-  const [maxPageNumberlimit, setMaxPageNumberLimit] = useState(5);
-  const [minPageNumberlimit, setMinPageNumberLimit] = useState(0);
+  // Limit the page Numbers shown
+  const [pageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
+  const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
   // Paginate
   const paginate = (pageNumber) => {
@@ -20,9 +20,9 @@ const Pagination = ({ currentPage, setCurrentPage, postPerPage, totalPosts }) =>
   const paginateNext = () => {
     setCurrentPage(currentPage + 1);
     // Show next set of pageNumbers
-    if (currentPage + 1 > maxPageNumberlimit) {
-      setMaxPageNumberLimit(maxPageNumberlimit + pageNumberlimit);
-      setMinPageNumberLimit(minPageNumberlimit + pageNumberlimit);
+    if (currentPage + 1 > maxPageNumberLimit) {
+      setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
   };
 
@@ -30,15 +30,16 @@ const Pagination = ({ currentPage, setCurrentPage, postPerPage, totalPosts }) =>
   const paginatePrev = () => {
     setCurrentPage(currentPage - 1);
     // Show prev set of pageNumbers
-    if ((currentPage - 1) % pageNumberlimit === 0) {
-      setMaxPageNumberLimit(maxPageNumberlimit - pageNumberlimit);
-      setMinPageNumberLimit(minPageNumberlimit - pageNumberlimit);
+    if ((currentPage - 1) % pageNumberLimit === 0) {
+      setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
   };
 
-  for (let i = 1; i <= Math.ceil(totalPages / postPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalPosts / postPerPage); i++) {
     pageNumbers.push(i);
   }
+  // console.log(pageNumbers);
 
   return (
     <ul className={styles.pagination}>
@@ -50,15 +51,17 @@ const Pagination = ({ currentPage, setCurrentPage, postPerPage, totalPosts }) =>
       </li>
 
       {pageNumbers.map((number) => {
-        return (
-          <li
-            key={number}
-            onClick={() => paginate(number)}
-            className={currentPage === number ? `${styles.active}` : null}
-          >
-            {number}
-          </li>
-        );
+        if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+          return (
+            <li
+              key={number}
+              onClick={() => paginate(number)}
+              className={currentPage === number ? `${styles.active}` : null}
+            >
+              {number}
+            </li>
+          );
+        }
       })}
 
       <li
