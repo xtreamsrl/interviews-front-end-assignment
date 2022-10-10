@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## How to run
+
+This application was made with Visual Studio Code, to run is necessary:
+
+<ul>
+  <li>An IDE (Integrated Development Environment.</li>
+  <li>Clone this repository</li>
+  <li>Install the  libraries i used to create, run folowing the lines of command: </li>
+    <ul>
+       <li> npm install react-router-dom@6 </li>
+       <li> npm install react-redux </li>
+       <li>npm install @mui/material @emotion/react @emotion/styled </li>
+       <li>npm install @mui/icons-material</li>
+       <li>npm install @reduxjs/toolkit</li>
+    </ul>
+  <li>With the repo in your IDE, run:  npm start </li>
+ </ul>
+  
+    
