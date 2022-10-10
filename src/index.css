@@ -1,0 +1,222 @@
+*{
+  margin: auto;
+  padding: 1%;
+  background-color:#e7dfdd;  
+}
+
+html{
+  font-size: 1rem;
+}
+.container{
+  border-radius: 10px;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  color: #e7dfdd;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination button {
+  width: 40px;
+  height: 40px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 10px 3% 10px  4%;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  background:linear-gradient( #e7dfdd, #a239ca);
+  border-color: #e7dfdd;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: #a239ca 0px 2px 4px, (#a239ca) 0px 3px 3px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  text-align: center;
+}
+.pagination button.active {
+  font-weight: 900;
+  border-color: #a239ca;
+  background: #a239ca;
+  box-shadow: #a239ca 0px 2px 4px, (#a239ca) 0px 3px 3px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  color: #e7dfdd;
+}
+.add-btn{
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  margin: 10% 0 5%;
+  color:#4717f6;
+  background-color:#4717f6;;
+}
+.box-comment{
+  color:#e7dfdd;
+  border: none;
+}
+.box-post{
+  display: grid;
+  grid-template-columns: repeat( 8, 1fr);
+  grid-template-rows: repeat( 4, auto);
+  box-shadow: #a239ca 0px 2px 4px, (#a239ca) 0px 3px 3px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.img-box, 
+.img-box-c{
+  width: 60px;
+  height: 60px;
+  color: #0e0b16;
+  text-align: center;
+  font-weight: 500;
+  border-radius: 5px;
+  padding-top: 40px;
+  background: #a239ca;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  margin-right: 5px;
+}
+.title,
+.title-c{
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  color:#0e0b16;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 15px;
+}
+.box-body,
+.box-body-c{
+  grid-column-start: 2;
+  grid-column-end: 7;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  text-align: left;
+  color: #a239ca;
+  margin: 10px 5px 10px 5px;
+  padding:  10px 5px 10px 5px;  
+  margin-left: 15px;
+}
+.seecomments{
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  margin-top: 0;
+  background-color:#4717f6;
+  text-align: center;
+  line-height: 040px;
+  font-size: 1rem;  
+  color:#e7dfdd;
+  border-radius: 5px;
+  padding: 5px 15px 2px 15px;
+}
+.btn-edit{
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  border: none;
+  
+  color:#0e0b16;
+
+}
+.btn-del{
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  margin-top: 10px;
+  color:#0e0b16;
+
+}
+.box-comment{
+  display: none;
+}
+.seecomments:hover .box-comment{
+  display: grid;
+  grid-template-columns: repeat( 8, 1fr);
+  grid-template-rows: repeat( 4, auto);  
+  border: none;
+}
+.title-c{
+  font-size: 14px;
+  line-height: 15px;
+}
+.box-body-c{  
+  font-size: 12px;
+  line-height: 15px;  
+  grid-column-start: 1;
+  grid-column-end: 8;
+  text-align: center;
+}
+.img-box-c{
+  background-color:#4717f6;
+  height: 20px;  
+  grid-row-start: 1;
+  grid-row-end: 1;
+  padding: 0 0 20px;
+}
+.btn-send{  
+  font-weight: 300;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-decoration-line: none;
+  text-align: center;
+  width: auto;
+  background-color:#a239ca;
+  color: #e7dfdd;
+  border: none;
+  border-radius: 5px;
+  margin-left: 300px;
+  padding: 10px;
+}
+.btn{
+  border: none;
+}
+.box-edit{
+  color: #0e0b16;
+  border: #878787 solid 1px;
+  border-radius: 5px;
+  width: 40vw;
+  align-content: center;
+}
+@media screen and (max-width:425px) {
+  .seecomments:hover .box-comment{
+    display: flex;
+    flex-direction: column; 
+    border: none;
+  }
+  .img-box-c{
+    margin: 0;
+    width: 100%;
+  }
+  .btn-send{
+    margin: auto;
+  }
+  .container{
+    width: 100%;
+    margin: 0;
+  }
+  .img-box{
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+  .seecomments{    
+    grid-column-start: 1;
+    grid-column-end: 8;
+    margin-bottom: 40px;
+  }
+  .box-body{    
+    grid-column-start: 1;
+    grid-column-end: 8;
+  }
+  
+}
