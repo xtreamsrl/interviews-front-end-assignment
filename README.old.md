@@ -85,4 +85,15 @@ The requirements for this challenge are the exact same requirements of the Front
 
 --- 
 # How to run
-...
+
+This application was made with Visual Studio Code, to run is necessary:
+
+An IDE (Integrated Development Environment.
+Clone this repository
+Install the libraries i used to create, run folowing the lines of command:
+npm install react-router-dom@6
+npm install react-redux
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+npm install @reduxjs/toolkit
+With the repo in your IDE, run: npm start
