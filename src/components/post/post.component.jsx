@@ -5,7 +5,7 @@ const Post = ({ post }) => {
 
   return (
     <div className="post-container">
-      <h1 className="post-title"> {title}</h1>
+      <h2 className="post-title"> {title}</h2>
       <p className="post-body">{body} </p>
     </div>
   );
