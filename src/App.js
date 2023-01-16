@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Post from "./components/post/post.component";
+import PostList from "./components/post-list/post-list.component";
 
 import { getPosts } from "./hooks/requests";
 
@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div>
-      <Post />
+      <PostList posts={posts} />
     </div>
   );
 };
