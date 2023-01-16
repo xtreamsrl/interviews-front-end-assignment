@@ -1,7 +1,24 @@
+import { useEffect, useState } from "react";
+
+import Post from "./components/post/post.component";
+
+import { getPosts } from "./hooks/requests";
+
 const App = () => {
+  const [posts, setPosts] = useState([]);
+  console.log(posts);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const posts = await getPosts();
+      setPosts(posts);
+    };
+    fetchPosts();
+  }, []);
+
   return (
-    <div className="App">
-      <h1>Assignment</h1>
+    <div>
+      <Post />
     </div>
   );
 };
