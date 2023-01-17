@@ -1,0 +1,43 @@
+.create {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+}
+
+.create label {
+  font-size: 1.6rem;
+  text-align: left;
+  display: block;
+}
+
+.create h2 {
+  font-size: 2.2rem;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.create input,
+.create textarea {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  border: 1px solid #ddd;
+  // box-sizing: border-box;
+  display: block;
+}
+
+.create textarea {
+  height: 35vh;
+  margin-bottom: 2rem;
+}
+
+.button-add {
+  background: #111;
+  color: #fff;
+  font-size: 1.6rem;
+  border: 0;
+  padding: 0.8rem 1.6rem;
+  border-radius: 3px;
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+$color-primary: #222;
+$color-primary-light: #444;
+
+.post-container {
+  margin-bottom: 3rem;
+}
+
+.post-title {
+  font-size: 1.8rem;
+  color: $color-primary;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.post-body {
+  font-size: 1.4rem;
+  color: $color-primary-light;
+}
