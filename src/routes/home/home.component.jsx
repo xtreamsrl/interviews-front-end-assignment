@@ -1,23 +1,13 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { Fragment } from "react";
 
+import { PostsContext } from "../../context/posts.context";
 import PostList from "../../components/post-list/post-list.component";
-
-import { getPosts } from "../../hooks/requests";
 
 import "./home.styles.scss";
 
 const Home = () => {
-  const [posts, setPosts] = useState([]);
-  console.log(posts);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const posts = await getPosts();
-      setPosts(posts);
-    };
-    fetchPosts();
-  }, []);
+  const { posts } = useContext(PostsContext);
 
   return (
     <Fragment>

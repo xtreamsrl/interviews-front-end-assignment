@@ -9,8 +9,8 @@ export const createPost = async (title, body) => {
   fetch(`${API_URL}`, {
     method: "POST",
     body: JSON.stringify({
-      title: "new post",
-      body: "this is the new post",
+      title: { title },
+      body: { body },
       userId: 101,
     }),
     headers: {
