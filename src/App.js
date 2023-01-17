@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Navigation from "./routes/navigation/navigation.component";
 import PostList from "./components/post-list/post-list.component";
 
 import { getPosts } from "./hooks/requests";
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <div>
+      <Navigation />
       <PostList posts={posts} />
     </div>
   );
