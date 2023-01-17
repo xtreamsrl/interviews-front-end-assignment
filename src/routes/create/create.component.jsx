@@ -1,7 +1,6 @@
-import { useState } from "react";
-
+import { useState, useContext } from "react";
 import { createPost } from "../../hooks/requests";
-
+import { PostsContext } from "../../context/posts.context";
 import "./create.styles.scss";
 
 const defaultFormFields = {
@@ -10,9 +9,11 @@ const defaultFormFields = {
 };
 
 const Create = () => {
+  const { posts, setPosts } = useContext(PostsContext);
+  console.log(posts);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { title, body } = formFields;
-  console.log(formFields);
+  // console.log(formFields);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -23,7 +24,9 @@ const Create = () => {
     try {
       const newPost = await createPost(title, body);
       resetFormFields();
+      setPosts([...posts, newPost]);
       console.log(newPost);
+      // return newPost;
     } catch (error) {
       console.error("error in creating new post:", error);
     }

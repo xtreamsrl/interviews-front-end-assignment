@@ -8,7 +8,7 @@ export const PostsContext = createContext({
 
 export const PostsProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
+  // console.log(posts);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -16,7 +16,7 @@ export const PostsProvider = ({ children }) => {
       setPosts(posts);
     };
     fetchPosts();
-  }, [posts]);
+  }, []);
 
   const value = { posts, setPosts };
 
