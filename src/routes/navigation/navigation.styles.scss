@@ -19,6 +19,12 @@
     .nav-link {
       font-size: 1.4rem;
       padding: 1.4rem;
+
+      &:link,
+      &:visited {
+        text-decoration: none;
+        color: #555;
+      }
     }
   }
 }

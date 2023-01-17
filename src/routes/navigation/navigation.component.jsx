@@ -11,9 +11,9 @@ const Navigation = () => {
           <h1>The Post</h1>
         </div>
         <div className="nav-links-container">
-          <span className="nav-link" to="/">
+          <Link className="nav-link" to={"/"}>
             Home
-          </span>
+          </Link>
           <Link className="nav-link" to="/create">
             New Post
           </Link>
