@@ -1,0 +1,630 @@
+{
+  "recipes": [
+    {
+      "id": "1",
+      "name": "Spaghetti Carbonara",
+      "ingredients": [
+        "Spaghetti",
+        "Eggs",
+        "Parmesan Cheese",
+        "Pancetta",
+        "Black Pepper"
+      ],
+      "instructions": "Boil the spaghetti. Fry the pancetta. Mix eggs and cheese. Combine all.",
+      "cuisineId": "1",
+      "dietId": "3",
+      "difficultyId": "3",
+      "image": "/uploads/carbonara-horizontal-square640-v2.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Margherita Pizza",
+      "ingredients": [
+        "Pizza Dough",
+        "Tomato Sauce",
+        "Mozzarella Cheese",
+        "Basil",
+        "Olive Oil"
+      ],
+      "instructions": "Prepare the dough. Spread tomato sauce. Add cheese and basil. Bake in the oven.",
+      "cuisineId": "1",
+      "dietId": "1",
+      "difficultyId": "2",
+      "image": "/uploads/Margherita-9920.webp"
+    },
+    {
+      "id": "3",
+      "name": "Tiramisu",
+      "ingredients": [
+        "Ladyfingers",
+        "Mascarpone Cheese",
+        "Coffee",
+        "Cocoa Powder",
+        "Sugar"
+      ],
+      "instructions": "Dip ladyfingers in coffee. Layer with mascarpone mixture. Dust with cocoa powder.",
+      "cuisineId": "1",
+      "dietId": "3",
+      "difficultyId": "2",
+      "image": "/uploads/tiramisu.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Caesar Salad",
+      "ingredients": [
+        "Romaine Lettuce",
+        "Caesar Dressing",
+        "Croutons",
+        "Parmesan Cheese",
+        "Chicken Breast"
+      ],
+      "instructions": "Chop lettuce. Add dressing, croutons, and cheese. Top with grilled chicken.",
+      "cuisineId": "2",
+      "dietId": "2",
+      "difficultyId": "1",
+      "image": "/uploads/Caesar-Salad.webp"
+    },
+    {
+      "id": "5",
+      "name": "Beef Tacos",
+      "ingredients": [
+        "Taco Shells",
+        "Ground Beef",
+        "Lettuce",
+        "Tomato",
+        "Cheddar Cheese"
+      ],
+      "instructions": "Cook beef. Assemble tacos with beef, lettuce, tomato, and cheese.",
+      "cuisineId": "3",
+      "dietId": "2",
+      "difficultyId": "1",
+      "image": "/uploads/Beef-Tacos.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Chicken Curry",
+      "ingredients": [
+        "Chicken",
+        "Curry Powder",
+        "Coconut Milk",
+        "Onion",
+        "Garlic"
+      ],
+      "instructions": "Cook chicken with onion and garlic. Add curry powder and coconut milk. Simmer until done.",
+      "cuisineId": "4",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/46822-indian-chicken-curry.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Sushi Rolls",
+      "ingredients": [
+        "Sushi Rice",
+        "Nori",
+        "Fish",
+        "Cucumber",
+        "Avocado"
+      ],
+      "instructions": "Spread rice on nori. Add fillings. Roll and slice.",
+      "cuisineId": "5",
+      "dietId": "2",
+      "difficultyId": "3",
+      "image": "/uploads/Sushi-Rolls-Maki-Sushi-–-Hosomaki-1106-II.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Paella",
+      "ingredients": [
+        "Rice",
+        "Saffron",
+        "Seafood",
+        "Bell Peppers",
+        "Peas"
+      ],
+      "instructions": "Cook rice with saffron. Add seafood and vegetables. Simmer until done.",
+      "cuisineId": "6",
+      "dietId": "2",
+      "difficultyId": "3",
+      "image": "/uploads/Paella.webp"
+    },
+    {
+      "id": "9",
+      "name": "French Onion Soup",
+      "ingredients": [
+        "Onions",
+        "Beef Broth",
+        "Gruyere Cheese",
+        "Baguette",
+        "Butter"
+      ],
+      "instructions": "Caramelize onions. Add broth. Top with bread and cheese. Broil until cheese melts.",
+      "cuisineId": "7",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/french-onion-soup-1.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Greek Salad",
+      "ingredients": [
+        "Cucumber",
+        "Tomato",
+        "Feta Cheese",
+        "Olives",
+        "Red Onion"
+      ],
+      "instructions": "Chop vegetables. Toss with feta and olives. Drizzle with olive oil.",
+      "cuisineId": "8",
+      "dietId": "2",
+      "difficultyId": "1",
+      "image": "/uploads/greek-salad-index-642f292397bbf.jpg"
+    },
+    {
+      "id": "11",
+      "name": "Pad Thai",
+      "ingredients": [
+        "Rice Noodles",
+        "Shrimp",
+        "Peanuts",
+        "Bean Sprouts",
+        "Eggs"
+      ],
+      "instructions": "Cook noodles. Stir-fry shrimp and vegetables. Add noodles and sauce. Top with peanuts.",
+      "cuisineId": "9",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/1200px-Phat_Thai_kung_Chang_Khien_street_stall.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Butter Chicken",
+      "ingredients": [
+        "Chicken",
+        "Tomato Sauce",
+        "Cream",
+        "Butter",
+        "Spices"
+      ],
+      "instructions": "Cook chicken with spices. Add tomato sauce and cream. Simmer until done.",
+      "cuisineId": "4",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/butter-chicken-ac2ff98.jpg"
+    },
+    {
+      "id": "13",
+      "name": "Fish and Chips",
+      "ingredients": [
+        "Cod",
+        "Potatoes",
+        "Flour",
+        "Beer",
+        "Salt"
+      ],
+      "instructions": "Batter and fry fish. Fry potatoes. Serve with salt.",
+      "cuisineId": "10",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Fish_and_chips_blackpool.jpg"
+    },
+    {
+      "id": "14",
+      "name": "Beef Stroganoff",
+      "ingredients": [
+        "Beef",
+        "Mushrooms",
+        "Onions",
+        "Sour Cream",
+        "Butter"
+      ],
+      "instructions": "Cook beef and vegetables. Add sour cream. Serve with noodles.",
+      "cuisineId": "11",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/16311-simple-beef-stroganoff-DDMFS-4x3.jpg"
+    },
+    {
+      "id": "15",
+      "name": "Eggplant Parmesan",
+      "ingredients": [
+        "Eggplant",
+        "Tomato Sauce",
+        "Mozzarella Cheese",
+        "Parmesan Cheese",
+        "Breadcrumbs"
+      ],
+      "instructions": "Bread and fry eggplant. Layer with sauce and cheese. Bake until golden.",
+      "cuisineId": "1",
+      "dietId": "3",
+      "difficultyId": "2",
+      "image": "/uploads/eggplant-parmesan.jpg"
+    },
+    {
+      "id": "16",
+      "name": "Falafel",
+      "ingredients": [
+        "Chickpeas",
+        "Onion",
+        "Garlic",
+        "Parsley",
+        "Spices"
+      ],
+      "instructions": "Blend ingredients. Form into balls. Fry until golden.",
+      "cuisineId": "12",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Falafel.webp"
+    },
+    {
+      "id": "17",
+      "name": "Ramen",
+      "ingredients": [
+        "Ramen Noodles",
+        "Pork",
+        "Egg",
+        "Green Onions",
+        "Soy Sauce"
+      ],
+      "instructions": "Cook noodles. Prepare broth with pork and soy sauce. Add toppings.",
+      "cuisineId": "5",
+      "dietId": "4",
+      "difficultyId": "2",
+      "image": "/uploads/Ramen.webp"
+    },
+    {
+      "id": "18",
+      "name": "Shakshuka",
+      "ingredients": [
+        "Tomatoes",
+        "Eggs",
+        "Onions",
+        "Bell Peppers",
+        "Spices"
+      ],
+      "instructions": "Cook vegetables with spices. Add eggs. Simmer until eggs are set.",
+      "cuisineId": "13",
+      "dietId": "2",
+      "difficultyId": "1",
+      "image": "/uploads/Shakshuka-main-1.webp"
+    },
+    {
+      "id": "19",
+      "name": "Chicken Alfredo",
+      "ingredients": [
+        "Fettuccine",
+        "Chicken",
+        "Cream",
+        "Parmesan Cheese",
+        "Butter"
+      ],
+      "instructions": "Cook pasta. Prepare sauce with chicken, cream, and cheese. Combine all.",
+      "cuisineId": "1",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Chicken-Alfredo-bowl.jpg"
+    },
+    {
+      "id": "20",
+      "name": "Bibimbap",
+      "ingredients": [
+        "Rice",
+        "Beef",
+        "Vegetables",
+        "Egg",
+        "Gochujang"
+      ],
+      "instructions": "Cook rice. Arrange beef and vegetables on top. Add egg and sauce.",
+      "cuisineId": "14",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/Bibimbap_3.webp"
+    },
+    {
+      "id": "21",
+      "name": "Pancakes",
+      "ingredients": [
+        "Flour",
+        "Milk",
+        "Eggs",
+        "Baking Powder",
+        "Sugar"
+      ],
+      "instructions": "Mix ingredients. Cook on griddle. Serve with syrup.",
+      "cuisineId": "2",
+      "dietId": "2",
+      "difficultyId": "1",
+      "image": "/uploads/best-homemade-pancakes-index-640775a2dbad8.jpg"
+    },
+    {
+      "id": "22",
+      "name": "Pasta Primavera",
+      "ingredients": [
+        "Pasta",
+        "Zucchini",
+        "Tomatoes",
+        "Bell Peppers",
+        "Parmesan Cheese"
+      ],
+      "instructions": "Cook pasta. Sauté vegetables. Combine with pasta and cheese.",
+      "cuisineId": "1",
+      "dietId": "3",
+      "difficultyId": "1",
+      "image": "/uploads/Pasta-Primavera-f.jpg"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "recipeId": "1",
+      "comment": "Delicious and easy to make!",
+      "rating": 5,
+      "date": "2024-06-08T14:48:00.000Z"
+    },
+    {
+      "id": "2",
+      "recipeId": "1",
+      "comment": "Loved it! Perfect for a quick dinner.",
+      "rating": 4,
+      "date": "2024-06-09T12:30:00.000Z"
+    },
+    {
+      "id": "3",
+      "recipeId": "1",
+      "comment": "Great flavors, will make again.",
+      "rating": 5,
+      "date": "2024-06-10T09:45:00.000Z"
+    },
+    {
+      "id": "4",
+      "recipeId": "2",
+      "comment": "Tasty and quick to make!",
+      "rating": 4,
+      "date": "2024-06-10T14:15:00.000Z"
+    },
+    {
+      "id": "5",
+      "recipeId": "2",
+      "comment": "My kids loved it!",
+      "rating": 5,
+      "date": "2024-06-11T10:20:00.000Z"
+    },
+    {
+      "id": "6",
+      "recipeId": "3",
+      "comment": "Perfect dessert for a party.",
+      "rating": 5,
+      "date": "2024-06-12T17:35:00.000Z"
+    },
+    {
+      "id": "7",
+      "recipeId": "4",
+      "comment": "Healthy and delicious.",
+      "rating": 4,
+      "date": "2024-06-13T08:25:00.000Z"
+    },
+    {
+      "id": "8",
+      "recipeId": "4",
+      "comment": "Easy to prepare.",
+      "rating": 4,
+      "date": "2024-06-14T12:10:00.000Z"
+    },
+    {
+      "id": "9",
+      "recipeId": "5",
+      "comment": "A family favorite!",
+      "rating": 5,
+      "date": "2024-06-15T18:45:00.000Z"
+    },
+    {
+      "id": "10",
+      "recipeId": "6",
+      "comment": "Rich and flavorful.",
+      "rating": 5,
+      "date": "2024-06-16T11:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "recipeId": "7",
+      "comment": "Great for sushi lovers.",
+      "rating": 5,
+      "date": "2024-06-17T15:55:00.000Z"
+    },
+    {
+      "id": "12",
+      "recipeId": "8",
+      "comment": "Takes time but worth it.",
+      "rating": 4,
+      "date": "2024-06-18T09:30:00.000Z"
+    },
+    {
+      "id": "13",
+      "recipeId": "9",
+      "comment": "Comforting and warm.",
+      "rating": 5,
+      "date": "2024-06-19T14:00:00.000Z"
+    },
+    {
+      "id": "14",
+      "recipeId": "10",
+      "comment": "Fresh and tasty.",
+      "rating": 4,
+      "date": "2024-06-20T13:45:00.000Z"
+    },
+    {
+      "id": "15",
+      "recipeId": "11",
+      "comment": "Authentic and delicious.",
+      "rating": 5,
+      "date": "2024-06-21T17:20:00.000Z"
+    },
+    {
+      "id": "16",
+      "recipeId": "12",
+      "comment": "Creamy and delicious.",
+      "rating": 5,
+      "date": "2024-06-22T09:55:00.000Z"
+    },
+    {
+      "id": "17",
+      "recipeId": "13",
+      "comment": "Crispy and tasty.",
+      "rating": 4,
+      "date": "2024-06-23T18:40:00.000Z"
+    },
+    {
+      "id": "18",
+      "recipeId": "14",
+      "comment": "Rich and creamy.",
+      "rating": 4,
+      "date": "2024-06-24T11:10:00.000Z"
+    },
+    {
+      "id": "19",
+      "recipeId": "15",
+      "comment": "Perfect vegetarian meal.",
+      "rating": 5,
+      "date": "2024-06-25T16:30:00.000Z"
+    },
+    {
+      "id": "20",
+      "recipeId": "16",
+      "comment": "Crispy and flavorful.",
+      "rating": 5,
+      "date": "2024-06-26T12:45:00.000Z"
+    },
+    {
+      "id": "21",
+      "recipeId": "17",
+      "comment": "Warm and comforting.",
+      "rating": 4,
+      "date": "2024-06-27T10:20:00.000Z"
+    },
+    {
+      "id": "22",
+      "recipeId": "18",
+      "comment": "Spicy and delicious.",
+      "rating": 5,
+      "date": "2024-06-28T14:55:00.000Z"
+    },
+    {
+      "id": "23",
+      "recipeId": "19",
+      "comment": "Rich and creamy.",
+      "rating": 5,
+      "date": "2024-06-29T17:40:00.000Z"
+    },
+    {
+      "id": "24",
+      "recipeId": "20",
+      "comment": "Hearty and flavorful.",
+      "rating": 4,
+      "date": "2024-06-30T19:15:00.000Z"
+    },
+    {
+      "id": "25",
+      "recipeId": "21",
+      "comment": "Fluffy and delicious.",
+      "rating": 5,
+      "date": "2024-07-01T09:35:00.000Z"
+    },
+    {
+      "id": "26",
+      "recipeId": "22",
+      "comment": "Fresh and vibrant.",
+      "rating": 4,
+      "date": "2024-07-02T14:20:00.000Z"
+    }
+  ],
+  "cuisines": [
+    {
+      "id": "1",
+      "name": "Italian"
+    },
+    {
+      "id": "2",
+      "name": "American"
+    },
+    {
+      "id": "3",
+      "name": "Mexican"
+    },
+    {
+      "id": "4",
+      "name": "Indian"
+    },
+    {
+      "id": "5",
+      "name": "Japanese"
+    },
+    {
+      "id": "6",
+      "name": "Spanish"
+    },
+    {
+      "id": "7",
+      "name": "French"
+    },
+    {
+      "id": "8",
+      "name": "Greek"
+    },
+    {
+      "id": "9",
+      "name": "Thai"
+    },
+    {
+      "id": "10",
+      "name": "British"
+    },
+    {
+      "id": "11",
+      "name": "Russian"
+    },
+    {
+      "id": "12",
+      "name": "Middle Eastern"
+    },
+    {
+      "id": "13",
+      "name": "North African"
+    },
+    {
+      "id": "14",
+      "name": "Korean"
+    }
+  ],
+  "difficulties": [
+    {
+      "id": "1",
+      "name": "Easy"
+    },
+    {
+      "id": "2",
+      "name": "Medium"
+    },
+    {
+      "id": "3",
+      "name": "Hard"
+    }
+  ],
+  "diets": [
+    {
+      "id": "1",
+      "name": "Vegetarian"
+    },
+    {
+      "id": "2",
+      "name": "Mediterranean"
+    },
+    {
+      "id": "3",
+      "name": "Non-Vegetarian"
+    },
+    {
+      "id": "4",
+      "name": "Pescatarian"
+    }
+  ]
+}

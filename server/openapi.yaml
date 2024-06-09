@@ -1,0 +1,275 @@
+openapi: 3.0.0
+info:
+  title: RecipeBook API
+  version: 1.0.0
+  description: API for the RecipeBook application
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /recipes:
+    get:
+      summary: Get a list of recipes with optional filtering and pagination
+      parameters:
+        - in: query
+          name: _page
+          schema:
+            type: integer
+          description: The page number to retrieve
+        - in: query
+          name: _limit
+          schema:
+            type: integer
+          description: The number of recipes per page
+        - in: query
+          name: q
+          schema:
+            type: string
+          description: A full text search query
+        - in: query
+          name: cuisineId
+          schema:
+            type: string
+          description: Filter recipes by cuisine id
+        - in: query
+          name: dietId
+          schema:
+            type: string
+          description: Filter recipes by diet preference id (e.g., vegetarian, gluten-free)
+        - in: query
+          name: difficultyId
+          schema:
+            type: string
+          description: Filter recipes by difficulty level
+        - in: query
+          name: _expand
+          schema:
+            type: array
+            items:
+              type: string
+              enum: [difficulty, cuisine, diet]
+          description: Embed relation in the data, this add difficulty, cuisine, diet object directy in the response
+      responses:
+        '200':
+          description: A list of recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+    post:
+      summary: Add a new recipe
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                ingredients:
+                  type: array
+                  items:
+                    type: string
+                instructions:
+                  type: string
+                cuisineId:
+                  type: string
+                dietId:
+                  type: string
+                difficultyId:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Recipe created successfully
+
+  /recipes/{id}:
+    get:
+      summary: Get detailed information about a specific recipe
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the recipe
+        - in: query
+          name: _expand
+          schema:
+            type: array
+            items:
+              type: string
+              enum: [difficulty, cuisine, diet]
+          description: Embed relation in the data, this add difficulty, cuisine, diet object directy in the response
+      responses:
+        '200':
+          description: Detailed information about the recipe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+
+  /recipes/{id}/comments:
+    post:
+      summary: Add a comment and rating to a specific recipe
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                rating:
+                  type: integer
+                date:
+                  type: string
+                  format: date-time
+      responses:
+        '201':
+          description: Comment and rating added successfully
+    get:
+      summary: Get all comments and ratings for a specific recipe
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the recipe
+      responses:
+        '200':
+          description: A list of comments and ratings for the recipe
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+
+  /cuisines:
+    get:
+      summary: Get a list of all available cuisines
+      responses:
+        '200':
+          description: A list of cuisines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cuisine'
+
+  /difficulties:
+    get:
+      summary: Get a list of all available difficulty levels
+      responses:
+        '200':
+          description: A list of difficulty levels
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Difficulty'
+
+  /diets:
+    get:
+      summary: Get a list of all available diets preferences
+      responses:
+        '200':
+          description: A list of diets preferences
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Diet'
+
+  /uploads/{imageName}:
+    get:
+      summary: Get the uploaded image
+      parameters:
+        - in: path
+          name: imageName
+          required: true
+          schema:
+            type: string
+          description: The image name
+      responses:
+        '200':
+          description: The image
+          content:
+            image/*:     # Media type
+              schema:
+                type: string
+                format: binary
+
+components:
+  schemas:
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ingredients:
+          type: array
+          items:
+            type: string
+        instructions:
+          type: string
+        cuisineId:
+          type: string
+        dietId:
+          type: string
+        difficultyId:
+          type: string
+        image:
+          type: string
+
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+        recipeId:
+          type: string
+        comment:
+          type: string
+        rating:
+          type: integer
+        date:
+          type: string
+          format: date-time
+
+    Cuisine:
+      type: object
+      properties:
+        name:
+          type: string
+
+    Difficulty:
+      type: object
+      properties:
+        name:
+          type: string
+
+    Diet:
+      type: object
+      properties:
+        name:
+          type: string

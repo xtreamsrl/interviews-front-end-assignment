@@ -2,87 +2,102 @@
 Hi! We're happy you opened this file, not everyone does!
 To let us know you did, paste a capybara picture 
 in the How to Run section 😊 
+These will be extra points for you!
 -->
 
-# Web & Mobile Interview Assignment
+# React Developer Interview Assignment
 
 ## Introduction
 
-This is the interview exercise for the Web & Mobile team of [xtream](https://www.linkedin.com/company/xtream-srl). In the following sections, you will find a number of challenges that we ask you to implement. You **DO NOT NECESSARILY need to complete 100% of them**, but rather only the ones you feel comfortable about or that interest you.    
+This is an interview exercise for the Digital Products team of [xtream](https://www.linkedin.com/company/xtream-srl). In
+the following sections, you will find a number of challenges that we ask you to implement. You **DO NOT NECESSARILY need
+to complete 100% of them**: you can choose to complete as many as you want.
 
-:watch: We estimate it should take around 8 hours to solve the challenges, and we give you **1 week** to submit a solution, so that you can do it at your own pace.    
+:watch: We give you **1 week** to submit a solution, so that you can do it at your own pace. We are aware that you might
+have other commitments, so we are not expecting you to work on this full-time. You will be evaluated based on the
+quality of your work, not on the time you spent on it.
 
 ### Deliverables
-Simply fork this repository and work on it as if you were working on a real-world project assigned to you. A week from now, we will checkout your work and evaluate it. 
 
-:heavy_exclamation_mark:**Important**: At the end of this README, you will find a "How to run" section that is not written out. Please, write there instructions on how to run your code. 
+Simply fork this repository and work on it as if you were working on a real-world project assigned to you. A week from
+now, we will assess your work.
+
+:heavy_exclamation_mark: **Important**: At the end of this README, you will find a "How to run" section that is not
+written out. Please, write there instructions on how to run your code: we will use this section to evaluate your work.
 
 ### Evaluation
+
 Your work will be assessed according to several criteria. As an example, these include:
+
 * Code quality
 * Design Patterns
 * Project Structure
 * Work quality (commits, branches, workflow, tests, ...)
 * Provided Documentation
 
+#### A Friendly Reminder:
+
+We’re all about embracing the latest in AI, including GPT and similar technologies. They’re great tools that can provide
+a helping hand, whether it’s for generating ideas, debugging, or refining solutions. However, for this coding challenge,
+we’re really keen to see your personal touch. We're interested in your thought process, decision-making, and the
+solutions you come up with.
+
+Remember, while using AI tools can be incredibly helpful, the essence of this task is to showcase your skills and
+creativity. Plus, be prepared to dive into the details of your code during the technical interview. Understanding the '
+why' and 'how' behind your decisions is crucial, as it reflects your ability to critically engage with the technology
+you're using.
+
+So, feel free to lean on AI for support, but ensure your work remains distinctly yours. We're looking for a blend of
+technical savvy and individual flair. Dive in, get creative, and let’s see what you can create. Excited to see your
+work. Happy coding! 🚀💼👩‍💻
+
 ### Let's get started
-We designed **three sections**: 
-1. Frontend
-2. Backend
-3. Mobile
 
-For each of these sections, we will identify a number of challenges and order them based on complexity. Each section will provide information regarding which challenges **can** be skipped.
+We do understand that some topics might be unfamiliar for you. Therefore, pick any number of challenges and try to
+complete them.
 
-Of course, it'd be great if you could complete all sections! However, we do understand that some topics might be  unfamiliar for you (such as developing a mobile app, for example). Therefore, pick any number of sections and try to complete their challenges.
-
-:heavy_exclamation_mark:**Important**: you might feel like the tasks are somehow too broad or the requirements are not fully elicited. **This is done on purpose**: we want to give you freedom to take your own choices and to put as fewer constraints as possible on your work. As an example, we do not ask any requirements with respect to the UI, so feel free to choose any style you enjoy.
-
-
-## Problem Domain
-[JSONPlaceholder](https://jsonplaceholder.typicode.com/) is a website that provides you with REST API endpoints for testing and developing your applications. We will be working with the */posts* resource provided by JSONPlaceholder. 
-
+:heavy_exclamation_mark:**Important**: you might feel like the tasks are somehow too broad, or the requirements are not
+fully elicited. **This is done on purpose**: we want to give you the freedom to make your own choices and to put as
+fewer constraints as possible on your work. We appreciate if you could record any decisions, assumptions and doubts,
+together with any questions that you will ask in a real-world scenario. If you want to choose our stack instead, we
+generally work with TypeScript and React.
 
 ---   
 
-### Section 1) Frontend 
+### Problem Domain
 
-:heavy_exclamation_mark: The requirements below are technologically agnostic, and you can choose to work with what you feel more comfortable with. For example, you may choose [React](https://it.reactjs.org/), [Angular](https://angular.io/) or plain JavaScript as well.
+Your task is to build a web application for RecipeBook, a community-driven recipe sharing platform. Users can browse
+recipes, add new recipes, and leave comments and ratings. The application should allow users to search for recipes by
+ingredients or cuisine and filter results based on dietary preferences. Do no consider authentication and authorization.
 
-#### Challenge #1.1
-Build a web page that renders the posts on the screen
+If you need some inspiration, you can take a look at [UI example folder](./ui-examples), where you can find some
+generated screenshots of the application. Consider them as a starting point of a more complex application with respect
+to the one that you have to build, but feel free to design your own UI.
 
-#### Challenge #1.2
-Allow the user to perform CRUD operations
+Inside the [server](./server) directory there is a simple server that you can use to fetch the data. We suggest you to
+read the instruction to setup it in the [server README](./server/README.md), you should find all the api endpoints that
+you need to complete the challenges.
 
-#### Challenge #1.3
-Redesign, if necessary, the rendering and retrieval of the list considering to support a hugely larger number of posts (~thousands of rows).
+#### Challenge #1: Recipe List
 
-#### Challenge #1.4
-Support mobile portrait layout
+Create the first RecipeBook page: the recipe list! Each recipe have a name, a photo, a list of ingredients
+and many more details that you can find in the data model. Consider to avoid to show all the recipes at once to reduce
+the browser load.
 
-#### Challenge #1.5
-Use the /comments resources provided by JSONPlaceholder to render the comments of a post below it on click with some kind of animation
+#### Challenge #2: Search and Filter
 
---- 
-### Section 2) Backend
+Add a search bar and a list of filters based on cuisine, difficulty and dietary preferences (e.g., vegetarian, gluten-free).
 
-##### Introduction
-In the previous section (**Frontend**) you reached out to the JSONPlaceholder API to perform CRUD operations on the posts. Now, we ask you to **replace JSONPlaceholder with your custom backend**.
+### Challenge #3: Add a Recipe
 
-:heavy_exclamation_mark: In this section, the two challenges are **not** mutually exclusive. That is, you can complete both of them, or just choose to implement one of them.
+Design a form that allows users to add new recipes by providing details such as the recipe name, ingredients,
+instructions, cuisine type, and dietary preference and an image.
 
-#### Challenge #2.1
-Implement your own backed using a language and libraries of your choice. The only requirement is that the backend needs to support CRUD operations and can seamlessy replace the JSONPlaceholder API in the challenges of Section 1).
+### Challenge #4: Recipe Details and Comments
+Develop a recipe details page where users can view the full recipe, including ingredients, instructions, and user
+comments. Enable users to add comments and rate the recipe, displaying the average rating and updating the list of
+comments.
 
-#### Challenge #2.2
-The requirements for this challenge are the exact same requirements of the previous challenge (#2.1), but we ask you to fullfil these requirements using the [Firebase](https://firebase.google.com/) services provided by Google.
+## How to run
 
---- 
-### Section 3) Mobile
-
-#### Challenge #3
-The requirements for this challenge are the exact same requirements of the Frontend challenges, but we ask you to fullfil these requirements through a mobile application. For example, you may choose [React Native](https://reactnative.dev/), [Flutter](https://flutter.dev/) or any other technology you feel comfortable developing mobile apps with.
-
---- 
-# How to run
 ...
