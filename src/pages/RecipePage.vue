@@ -1,6 +1,6 @@
 <script>
 import AppHeader from "../components/AppHeader.vue";
-import AppMain from "../components/AppMain.vue";
+import AppMainRecipePage from "../components/AppMainRecipePage.vue";
 import AppFooter from "../components/AppFooter.vue";
 
 export default {
@@ -10,7 +10,7 @@ export default {
 
   components: {
     AppHeader,
-    AppMain,
+    AppMainRecipePage,
     AppFooter,
   },
 };
@@ -18,7 +18,7 @@ export default {
 
 <template>
   <AppHeader />
-  <AppMain />
+  <AppMainRecipePage />
   <AppFooter />
 </template>
 
