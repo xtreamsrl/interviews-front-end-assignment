@@ -9,4 +9,6 @@ export const api = {
   ingredients: "http://localhost:8080/ingredients",
 };
 
-export const store = reactive({});
+export const store = reactive({
+  searchedTerm: "",
+});
