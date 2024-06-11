@@ -67,15 +67,15 @@ export default {
 
 <template>
   <div class="card">
-    <div class="row d-flex">
-      <div class="col-3">
+    <div class="row g-2 d-flex">
+      <div class="col">
         <div class="img-wrapper">
           <img class="card-img-top" :src="recipeImage" :alt="recipe.name" />
         </div>
       </div>
-      <div class="col-4">
+      <div class="col">
         <div class="detail-wrapper">
-          <h3 class="recipe-title">{{ recipe.name }}</h3>
+          <h3 class="h5">{{ recipe.name }}</h3>
           <p>{{ dietName }}</p>
           <p>
             Only <strong>{{ recipe.ingredients.length }}</strong> Ingredients
@@ -85,15 +85,15 @@ export default {
           </span>
         </div>
       </div>
-      <div class="col-2 ms-auto text-end">
+      <div class="col ms-auto">
         <div class="control-wrapper">
           <span><strong>Difficulty: </strong>{{ difficultyName }}</span>
-          <div class="rating-container">
+          <div class="rating-container mt-2">
             <span class="rating me-2" v-if="averageRating >= 4.5"
               >Highly rated</span
             >
             <span
-              class="badge rounded-pill mt-2"
+              class="badge rounded-pill"
               :style="{
                 backgroundColor: averageRating >= 4.5 && 'orangered',
                 color: averageRating >= 4.5 && 'white',
@@ -103,7 +103,11 @@ export default {
               {{ averageRating }}
             </span>
           </div>
-          <div class="btn btn-orange rounded-pill mt-auto">View Details</div>
+          <router-link
+            :to="{ name: 'recipes.show ', params: { id: recipe.id } }"
+            class="btn btn-orange rounded-pill mt-auto"
+            >View Details</router-link
+          >
         </div>
       </div>
     </div>
@@ -114,20 +118,28 @@ export default {
 .card {
   padding: 1rem;
   border-radius: 2rem;
-  height: 300px;
+  height: auto;
   -webkit-box-shadow: -2px 10px 24px -3px rgba(0, 0, 0, 0.1);
   box-shadow: -2px 10px 24px -3px rgba(0, 0, 0, 0.1);
   border: none;
+  margin-bottom: 1rem;
   .row {
-    height: 100%;
+    height: auto;
     .col {
-      height: 100%;
-      &:last-of-type {
-        flex: 3;
-      }
+      height: auto;
+    }
+    p,
+    .rating {
+      font-size: 1rem;
+      margin: 0;
+      color: rgb(175, 175, 175);
+    }
+    .rating-container {
+      display: flex;
+      align-items: flex-start;
     }
     .img-wrapper {
-      height: 100%;
+      width: 100%;
       aspect-ratio: 1/1;
       overflow: hidden;
       border-radius: 1rem;
@@ -143,13 +155,9 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      p {
-        font-size: 1.25rem;
-        color: rgb(175, 175, 175);
-      }
 
       .recipe-title {
-        font: 3.5rem;
+        font: 2.5rem;
       }
     }
     .badge {
