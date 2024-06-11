@@ -1,7 +1,8 @@
 <script>
 import axios from "axios";
 import { store, api } from "../store/index";
-import RecipeCard from "./RecipeCard.vue";
+import RecipeList from "./RecipeList.vue";
+import RecipeFilter from "./RecipeFilter.vue";
 
 export default {
   data() {
@@ -11,11 +12,13 @@ export default {
       cuisines: [],
       difficulties: [],
       diets: [],
+      filtersActive: false,
     };
   },
 
   components: {
-    RecipeCard,
+    RecipeList,
+    RecipeFilter,
   },
 
   methods: {
@@ -50,6 +53,10 @@ export default {
         this.diets = response.data;
       });
     },
+
+    handleFilterClick() {
+      this.filtersActive = !this.filtersActive;
+    },
   },
 
   created() {
@@ -64,17 +71,27 @@ export default {
 
 <template>
   <div class="container py-3">
-    <p>Result for</p>
-    <h2>Recipes found for your search criteria</h2>
-    <div class="row g-3">
-      <div class="col-12" v-for="recipe of recipes">
-        <RecipeCard
-          :recipe="recipe"
+    <div class="row justify-content-center g-3">
+      <div :class="filtersActive ? 'col-8' : 'col-12'">
+        <RecipeList
+          :recipes="recipes"
           :comments="comments"
           :cuisines="cuisines"
           :diets="diets"
           :difficulties="difficulties"
-          :key="recipe.id"
+          :filtersActive="filtersActive"
+          @openFilterCard="handleFilterClick()"
+        />
+      </div>
+      <div :class="filtersActive ? 'col-4' : ''">
+        <RecipeFilter
+          :recipes="recipes"
+          :comments="comments"
+          :cuisines="cuisines"
+          :diets="diets"
+          :difficulties="difficulties"
+          v-if="filtersActive"
+          @closeFilterCard="handleFilterClick()"
         />
       </div>
     </div>
