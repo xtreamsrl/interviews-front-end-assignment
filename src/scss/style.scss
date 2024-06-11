@@ -7,7 +7,11 @@ a {
 }
 
 .btn-orange {
-  background-color: orangered;
+  background-color: rgb(255, 69, 0);
   border-color: orangered;
   color: white;
+  padding: 0.5rem 2.5rem;
+  &:hover {
+    border: 1px solid orangered;
+  }
 }

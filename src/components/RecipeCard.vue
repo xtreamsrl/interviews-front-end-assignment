@@ -115,6 +115,9 @@ export default {
   padding: 1rem;
   border-radius: 2rem;
   height: 300px;
+  -webkit-box-shadow: -2px 10px 24px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 10px 24px -3px rgba(0, 0, 0, 0.1);
+  border: none;
   .row {
     height: 100%;
     .col {
@@ -155,6 +158,10 @@ export default {
       margin-top: auto;
       padding: 0.5rem 1rem;
       font-size: 1.25rem;
+    }
+
+    .btn-orange {
+      padding-inline: 1rem;
     }
 
     .control-wrapper {

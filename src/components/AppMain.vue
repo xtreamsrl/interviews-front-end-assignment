@@ -63,7 +63,9 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container py-3">
+    <p>Result for</p>
+    <h2>Recipes found for your search criteria</h2>
     <div class="row g-3">
       <div class="col-12" v-for="recipe of recipes">
         <RecipeCard
