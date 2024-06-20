@@ -99,13 +99,7 @@
     {
       "id": "7",
       "name": "Sushi Rolls",
-      "ingredients": [
-        "Sushi Rice",
-        "Nori",
-        "Fish",
-        "Cucumber",
-        "Avocado"
-      ],
+      "ingredients": ["Sushi Rice", "Nori", "Fish", "Cucumber", "Avocado"],
       "instructions": "Spread rice on nori. Add fillings. Roll and slice.",
       "cuisineId": "5",
       "dietId": "2",
@@ -115,13 +109,7 @@
     {
       "id": "8",
       "name": "Paella",
-      "ingredients": [
-        "Rice",
-        "Saffron",
-        "Seafood",
-        "Bell Peppers",
-        "Peas"
-      ],
+      "ingredients": ["Rice", "Saffron", "Seafood", "Bell Peppers", "Peas"],
       "instructions": "Cook rice with saffron. Add seafood and vegetables. Simmer until done.",
       "cuisineId": "6",
       "dietId": "2",
@@ -179,13 +167,7 @@
     {
       "id": "12",
       "name": "Butter Chicken",
-      "ingredients": [
-        "Chicken",
-        "Tomato Sauce",
-        "Cream",
-        "Butter",
-        "Spices"
-      ],
+      "ingredients": ["Chicken", "Tomato Sauce", "Cream", "Butter", "Spices"],
       "instructions": "Cook chicken with spices. Add tomato sauce and cream. Simmer until done.",
       "cuisineId": "4",
       "dietId": "2",
@@ -195,13 +177,7 @@
     {
       "id": "13",
       "name": "Fish and Chips",
-      "ingredients": [
-        "Cod",
-        "Potatoes",
-        "Flour",
-        "Beer",
-        "Salt"
-      ],
+      "ingredients": ["Cod", "Potatoes", "Flour", "Beer", "Salt"],
       "instructions": "Batter and fry fish. Fry potatoes. Serve with salt.",
       "cuisineId": "10",
       "dietId": "2",
@@ -211,13 +187,7 @@
     {
       "id": "14",
       "name": "Beef Stroganoff",
-      "ingredients": [
-        "Beef",
-        "Mushrooms",
-        "Onions",
-        "Sour Cream",
-        "Butter"
-      ],
+      "ingredients": ["Beef", "Mushrooms", "Onions", "Sour Cream", "Butter"],
       "instructions": "Cook beef and vegetables. Add sour cream. Serve with noodles.",
       "cuisineId": "11",
       "dietId": "2",
@@ -243,13 +213,7 @@
     {
       "id": "16",
       "name": "Falafel",
-      "ingredients": [
-        "Chickpeas",
-        "Onion",
-        "Garlic",
-        "Parsley",
-        "Spices"
-      ],
+      "ingredients": ["Chickpeas", "Onion", "Garlic", "Parsley", "Spices"],
       "instructions": "Blend ingredients. Form into balls. Fry until golden.",
       "cuisineId": "12",
       "dietId": "2",
@@ -275,13 +239,7 @@
     {
       "id": "18",
       "name": "Shakshuka",
-      "ingredients": [
-        "Tomatoes",
-        "Eggs",
-        "Onions",
-        "Bell Peppers",
-        "Spices"
-      ],
+      "ingredients": ["Tomatoes", "Eggs", "Onions", "Bell Peppers", "Spices"],
       "instructions": "Cook vegetables with spices. Add eggs. Simmer until eggs are set.",
       "cuisineId": "13",
       "dietId": "2",
@@ -307,13 +265,7 @@
     {
       "id": "20",
       "name": "Bibimbap",
-      "ingredients": [
-        "Rice",
-        "Beef",
-        "Vegetables",
-        "Egg",
-        "Gochujang"
-      ],
+      "ingredients": ["Rice", "Beef", "Vegetables", "Egg", "Gochujang"],
       "instructions": "Cook rice. Arrange beef and vegetables on top. Add egg and sauce.",
       "cuisineId": "14",
       "dietId": "2",
@@ -323,13 +275,7 @@
     {
       "id": "21",
       "name": "Pancakes",
-      "ingredients": [
-        "Flour",
-        "Milk",
-        "Eggs",
-        "Baking Powder",
-        "Sugar"
-      ],
+      "ingredients": ["Flour", "Milk", "Eggs", "Baking Powder", "Sugar"],
       "instructions": "Mix ingredients. Cook on griddle. Serve with syrup.",
       "cuisineId": "2",
       "dietId": "2",
