@@ -17,7 +17,6 @@ export const RecipeDetails = () => {
   const [comments, setComments] = useState();
   console.log(comments);
   const currentDate = new Date();
-  // format date to look like this 2024-07-02T14:20:00.000Z
   const utcDate = currentDate.toISOString().split("T")[0] + "T00:00:00.000Z";
   const [newComment, setNewComment] = useState({
     comment: "",
