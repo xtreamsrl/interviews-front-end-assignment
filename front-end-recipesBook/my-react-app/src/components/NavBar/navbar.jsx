@@ -1,5 +1,5 @@
-import LinkButton from "../UI/Link/linkButton";
-import Flex from "../UI/Flex/Flex";
+import LinkButton from "../../UI/Link/linkButton";
+import Flex from "../../UI/Flex/Flex";
 
 export const Navbar = () => {
   return (

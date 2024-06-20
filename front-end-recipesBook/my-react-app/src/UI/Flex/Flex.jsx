@@ -9,6 +9,10 @@ const Flex = styled.div`
   align-items: ${(props) => props.align};
   gap: ${(props) => props.gap};
   padding: ${(props) => props.padding};
+  flex-wrap: ${(props) => props.wrap || "nowrap"};
+  border: ${(props) => props.border || "none"};
+  border-radius: ${(props) => props.borderRadius || "none"};
+  background-color: ${(props) => props.backgroundColor || "none"};
 `;
 
 export default Flex;
