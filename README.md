@@ -1,7 +1,7 @@
 <!---
 Hi! We're happy you opened this file, not everyone does!
-To let us know you did, paste a capybara picture 
-in the How to Run section 😊 
+To let us know you did, paste a capybara picture
+in the How to Run section 😊
 These will be extra points for you!
 -->
 
@@ -62,7 +62,7 @@ fewer constraints as possible on your work. We appreciate if you could record an
 together with any questions that you will ask in a real-world scenario. If you want to choose our stack instead, we
 generally work with TypeScript and React.
 
----   
+---
 
 ### Problem Domain
 
@@ -99,5 +99,5 @@ comments. Enable users to add comments and rate the recipe, displaying the avera
 comments.
 
 ## How to run
-
+![capybara](https://media.istockphoto.com/id/1490766749/vector/vector-cute-capybara-isolated-on-white-background-vector-graphics.jpg?s=612x612&w=0&k=20&c=E8lNFT0TQFTNKTVzwoMj0VbVfodcG6ema2iMQeISCvM=)
 ...
