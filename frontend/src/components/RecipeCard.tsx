@@ -12,7 +12,8 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
           objectFit="cover"
           />
       </div>
-      <h2 className="h-100">{recipe.name}</h2>
+      <h2 className="h-100 font-serif font-light text-4xl pt-4 pb-20">{recipe.name}</h2>
+      <p>Difficulty: {recipe.difficultyId}</p>
     </>
   );
 };
