@@ -24,7 +24,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex-1">
       <RecipeList recipes={recipes} />
     </div>
   );

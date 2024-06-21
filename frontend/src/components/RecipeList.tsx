@@ -1,18 +1,12 @@
 import { Recipe } from "../utils/types";
-import Image from "next/image";
+import RecipeCard from "./RecipeCard";
 
 const RecipeList = ({ recipes }: { recipes: Recipe[] }) => {
   return (
-    <ul>
+    <ul className="grid grid-cols-3 gap-4 p-8">
       {recipes.map((recipe) => (
         <li key={recipe.id}>
-          <h2>{recipe.name}</h2>
-          <Image
-            src={recipe.image}
-            alt={recipe.name}
-            width={200}
-            height={200}
-          />
+          <RecipeCard recipe={recipe} />
         </li>
       ))}
     </ul>
