@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { Recipe, Cuisine, Difficulty, Diet } from "../utils/types";
-import { fetchCuisines, fetchRecipes, fetchDifficulties, fetchDiets } from "../utils/api";
+import {
+  fetchCuisines,
+  fetchRecipes,
+  fetchDifficulties,
+  fetchDiets,
+} from "../utils/api";
 
 import RecipeList from "../components/RecipeList";
 import SearchBar from "../components/SearchBar";
@@ -15,7 +20,8 @@ const Home = () => {
   const [selectedCuisineId, setSelectedCuisineId] = useState<Cuisine["id"]>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [difficulties, setDifficulties] = useState<Difficulty[]>([]);
-  const [selectedDifficultyId, setSelectedDifficultyId] = useState<Difficulty["id"]>("");
+  const [selectedDifficultyId, setSelectedDifficultyId] =
+    useState<Difficulty["id"]>("");
   const [diets, setDiets] = useState<Diet[]>([]);
   const [selectedDietId, setSelectedDietId] = useState<Diet["id"]>("");
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
@@ -56,7 +62,7 @@ const Home = () => {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     getRecipes();
     getCuisines();
@@ -66,7 +72,12 @@ const Home = () => {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    filterRecipes(query, selectedCuisineId, selectedDifficultyId, selectedDietId);
+    filterRecipes(
+      query,
+      selectedCuisineId,
+      selectedDifficultyId,
+      selectedDietId
+    );
   };
 
   const handleCuisineChange = (cuisineId: Cuisine["id"]) => {
@@ -77,12 +88,12 @@ const Home = () => {
   const handleDifficultyChange = (difficultyId: Difficulty["id"]) => {
     setSelectedDifficultyId(difficultyId);
     filterRecipes(searchQuery, selectedCuisineId, difficultyId, selectedDietId);
-  }
+  };
 
   const handleDietChange = (dietId: Diet["id"]) => {
     setSelectedDietId(dietId);
     filterRecipes(searchQuery, selectedCuisineId, selectedDifficultyId, dietId);
-  }
+  };
 
   const filterRecipes = (
     query: string,
@@ -91,7 +102,12 @@ const Home = () => {
     dietId: Diet["id"]
   ) => {
     const filtered = recipes.filter((recipe) => {
-      const matchesQuery = recipe.name.toLowerCase().includes(query);
+      const matchesQuery =
+        recipe.name.toLowerCase().includes(query) ||
+        recipe.ingredients.some((ingredient) =>
+          ingredient.toLowerCase().includes(query)
+        ) ||
+        recipe.instructions.toLowerCase().includes(query);
       const matchesCuisine = cuisineId === "" || recipe.cuisineId === cuisineId;
       const matchesDifficulty =
         difficultyId === "" || recipe.difficultyId === difficultyId;
@@ -123,7 +139,9 @@ const Home = () => {
         diets={diets}
       />
       <RecipeList recipes={filteredRecipes} onRecipeClick={handleRecipeClick} />
-      {selectedRecipe && <RecipeModal recipe={selectedRecipe} onClose={closeModal} />}
+      {selectedRecipe && (
+        <RecipeModal recipe={selectedRecipe} onClose={closeModal} />
+      )}
     </div>
   );
 };

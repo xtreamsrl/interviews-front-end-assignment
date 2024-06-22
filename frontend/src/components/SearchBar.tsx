@@ -44,50 +44,52 @@ const SearchBar = ({
   }
 
   return (
-    <div className="flex mb-4">
+    <div className="flex mb-4 bg-white p-3 rounded-full">
       <input
         type="text"
         value={query}
         onChange={handleInputChange}
-        className="w-full p-2 border border-gray-300 rounded"
+        className="pl-4 w-1/2 focus:outline-none"
         placeholder="Search recipes..."
       />
-      <select
-        id="cuisine-picker"
-        onChange={handleCuisineChange}
-        className="p-2 border border-gray-300 rounded mt-2 w-full"
-      >
-        <option value="">All Cuisines</option>
-        {cuisines.map((cuisine) => (
-          <option key={cuisine.id} value={cuisine.id}>
-            {cuisine.name}
-          </option>
-        ))}
-      </select>
-      <select
-        id="difficulty-picker"
-        onChange={handleDifficultyChange}
-        className="p-2 border border-gray-300 rounded mt-2 w-full"
-      >
-        <option value="">All Difficulties</option>
-        {difficulties.map((difficulty) => (
-          <option key={difficulty.id} value={difficulty.id}>
-            {difficulty.name}
-          </option>
-        ))}
-      </select>
-      <select
-        id="diet-picker"
-        onChange={handleDietChange}
-        className="p-2 border border-gray-300 rounded mt-2 w-full"
-      >
-        <option value="">All Diets</option>
-        {diets.map((diet) => (
-          <option key={diet.id} value={diet.id}>
-            {diet.name}
-          </option>
-        ))}
-      </select>
+      <div className="flex flex-row w-1/2">
+        <select
+          id="cuisine-picker"
+          onChange={handleCuisineChange}
+          className="px-2 border-l-2 w-full focus:outline-none text-gray-500"
+        >
+          <option value="">All Cuisines</option>
+          {cuisines.map((cuisine) => (
+            <option key={cuisine.id} value={cuisine.id}>
+              {cuisine.name}
+            </option>
+          ))}
+        </select>
+        <select
+          id="difficulty-picker"
+          onChange={handleDifficultyChange}
+          className="px-2 border-l-2 w-full focus:outline-none text-gray-500"
+        >
+          <option value="">All Difficulties</option>
+          {difficulties.map((difficulty) => (
+            <option key={difficulty.id} value={difficulty.id}>
+              {difficulty.name}
+            </option>
+          ))}
+        </select>
+        <select
+          id="diet-picker"
+          onChange={handleDietChange}
+          className="px-2 border-l-2 w-full focus:outline-none text-gray-500"
+        >
+          <option value="">All Diets</option>
+          {diets.map((diet) => (
+            <option key={diet.id} value={diet.id}>
+              {diet.name}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };
