@@ -1,10 +1,15 @@
 export interface Recipe {
-  id: number;
+  id: string;
   name: string;
   ingredients: string[];
   instructions: string;
-  cuisineId: number;
-  dietId: number;
-  difficultyId: number;
+  cuisineId: string;
+  dietId: string;
+  difficultyId: string;
   image: string;
+}
+
+export interface Cuisine {
+  id: string;
+  name: string;
 }
