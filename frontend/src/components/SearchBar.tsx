@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Cuisine } from "../utils/types";
+import { Cuisine, Difficulty } from "../utils/types";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
   onCuisineChange: (cuisineId: Cuisine["id"]) => void;
   cuisines: Cuisine[];
+  onDifficultyChange: (difficultyId: Difficulty["id"]) => void;
+  difficulties: Difficulty[];
 }
 
-const SearchBar = ({ onSearch, onCuisineChange, cuisines }: SearchBarProps) => {
+const SearchBar = ({ onSearch, onCuisineChange, cuisines, onDifficultyChange, difficulties }: SearchBarProps) => {
   const [query, setQuery] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +21,11 @@ const SearchBar = ({ onSearch, onCuisineChange, cuisines }: SearchBarProps) => {
   const handleCuisineChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     onCuisineChange(value);
+  };
+
+  const handleDifficultyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    onDifficultyChange(value);
   };
 
   return (
@@ -39,6 +46,18 @@ const SearchBar = ({ onSearch, onCuisineChange, cuisines }: SearchBarProps) => {
         {cuisines.map((cuisine) => (
           <option key={cuisine.id} value={cuisine.id}>
             {cuisine.name}
+          </option>
+        ))}
+      </select>
+      <select
+        id="difficulty-picker"
+        onChange={handleDifficultyChange}
+        className="p-2 border border-gray-300 rounded mt-2 w-full"
+      >
+        <option value="">All Difficulties</option>
+        {difficulties.map((difficulty) => (
+          <option key={difficulty.id} value={difficulty.id}>
+            {difficulty.name}
           </option>
         ))}
       </select>

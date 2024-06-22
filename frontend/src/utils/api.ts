@@ -17,3 +17,12 @@ export const fetchCuisines = async () => {
   const data = await response.json();
   return data;
 }
+
+export const fetchDifficulties = async () => {
+  const response = await fetch(`${BASE_URL}/difficulties`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch difficulties');
+  }
+  const data = await response.json();
+  return data;
+}

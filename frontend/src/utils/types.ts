@@ -13,3 +13,8 @@ export interface Cuisine {
   id: string;
   name: string;
 }
+
+export interface Difficulty {
+  id: string;
+  name: string;
+}
