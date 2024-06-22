@@ -6,6 +6,7 @@ import { fetchCuisines, fetchRecipes, fetchDifficulties, fetchDiets } from "../u
 
 import RecipeList from "../components/RecipeList";
 import SearchBar from "../components/SearchBar";
+import RecipeModal from "../components/RecipeModal";
 
 const Home = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -17,6 +18,7 @@ const Home = () => {
   const [selectedDifficultyId, setSelectedDifficultyId] = useState<Difficulty["id"]>("");
   const [diets, setDiets] = useState<Diet[]>([]);
   const [selectedDietId, setSelectedDietId] = useState<Diet["id"]>("");
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -101,6 +103,14 @@ const Home = () => {
     setFilteredRecipes(filtered);
   };
 
+  const handleRecipeClick = (recipe: Recipe) => {
+    setSelectedRecipe(recipe);
+  };
+
+  const closeModal = () => {
+    setSelectedRecipe(null);
+  };
+
   return (
     <div className="m-auto p-8 max-w-7xl">
       <SearchBar
@@ -112,7 +122,8 @@ const Home = () => {
         onDietChange={handleDietChange}
         diets={diets}
       />
-      <RecipeList recipes={filteredRecipes} />
+      <RecipeList recipes={filteredRecipes} onRecipeClick={handleRecipeClick} />
+      {selectedRecipe && <RecipeModal recipe={selectedRecipe} onClose={closeModal} />}
     </div>
   );
 };

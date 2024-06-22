@@ -4,14 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --light-green: #f3fafa;
-}
-
 body {
   font-family: 'Roboto', sans-serif;
   color: rgb(var(--foreground-rgb));
-  background-color: var(--light-green);
+  background-color: #f3fafa;
 }
 
 .text-balance {
