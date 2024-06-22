@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Cuisine, Difficulty } from "../utils/types";
+import { Cuisine, Difficulty, Diet } from "../utils/types";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -7,9 +7,19 @@ interface SearchBarProps {
   cuisines: Cuisine[];
   onDifficultyChange: (difficultyId: Difficulty["id"]) => void;
   difficulties: Difficulty[];
+  onDietChange: (dietId: Diet["id"]) => void;
+  diets: Diet[];
 }
 
-const SearchBar = ({ onSearch, onCuisineChange, cuisines, onDifficultyChange, difficulties }: SearchBarProps) => {
+const SearchBar = ({
+  onSearch,
+  onCuisineChange,
+  cuisines,
+  onDifficultyChange,
+  difficulties,
+  onDietChange,
+  diets,
+}: SearchBarProps) => {
   const [query, setQuery] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +37,11 @@ const SearchBar = ({ onSearch, onCuisineChange, cuisines, onDifficultyChange, di
     const value = e.target.value;
     onDifficultyChange(value);
   };
+
+  const handleDietChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    onDietChange(value);
+  }
 
   return (
     <div className="flex mb-4">
@@ -58,6 +73,18 @@ const SearchBar = ({ onSearch, onCuisineChange, cuisines, onDifficultyChange, di
         {difficulties.map((difficulty) => (
           <option key={difficulty.id} value={difficulty.id}>
             {difficulty.name}
+          </option>
+        ))}
+      </select>
+      <select
+        id="diet-picker"
+        onChange={handleDietChange}
+        className="p-2 border border-gray-300 rounded mt-2 w-full"
+      >
+        <option value="">All Diets</option>
+        {diets.map((diet) => (
+          <option key={diet.id} value={diet.id}>
+            {diet.name}
           </option>
         ))}
       </select>

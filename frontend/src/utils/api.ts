@@ -26,3 +26,12 @@ export const fetchDifficulties = async () => {
   const data = await response.json();
   return data;
 }
+
+export const fetchDiets = async () => {
+  const response = await fetch(`${BASE_URL}/diets`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch diets');
+  }
+  const data = await response.json();
+  return data;
+}

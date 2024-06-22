@@ -18,3 +18,8 @@ export interface Difficulty {
   id: string;
   name: string;
 }
+
+export interface Diet {
+  id: string;
+  name: string;
+}
