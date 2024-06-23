@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-export default function Tag() {
+export default function Tag({ tagSubject }) {
 
     return (
 
-        < button className='tag' >Mexican</button>
+        < button className='tag'>#{tagSubject}</button>
     )
 }

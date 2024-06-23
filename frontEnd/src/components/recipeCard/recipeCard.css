@@ -8,14 +8,36 @@ button {
     border-radius: 40px;
     border-color: #717171;
     padding: .5rem 1.6rem .5rem 1.6rem;
+
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+
+
 }
 
+button:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
 
+.card:hover {
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+}
 
 .redButton {
     background-color: #f42f26;
     border-width: 0;
     color: #ffffff;
+}
+
+.redButton:hover {
+    background-color: #dc2a22;
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
 }
 
 .card {
@@ -30,6 +52,10 @@ button {
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0px 0px 18px #d0d0d0;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform 0.3s ease-in-out;
 }
 
 .cardLeft {
@@ -65,7 +91,7 @@ button {
 
 .dishOverview {
     margin-top: .5rem;
-    margin-bottom: .7rem;
+    margin-bottom: 3rem;
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -76,8 +102,12 @@ button {
     margin-bottom: .1rem;
 }
 
-.dishCategories {
+.dishIngredients {
+    width: 25rem;
     color: #9e9a9a;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-top: -.5rem;
     margin-bottom: 1rem;
 }
@@ -93,16 +123,11 @@ button {
     font-size: 1.1rem;
 }
 
-.dishIngredients {
-    display: flex;
-    flex-direction: row;
-    margin-top: -1.4rem;
-    margin-bottom: 1rem;
 
-}
 
 .dishIngredient {
     margin-right: 1rem;
+    margin-bottom: -.5rem;
 }
 
 .dishTags {
@@ -156,13 +181,9 @@ button {
 }
 
 .actionBlock {
-    margin-top: 2rem;
+    margin-top: 6rem;
 }
 
-.dishPrice {
-    margin-top: 2.6rem;
-    margin-bottom: -.8rem;
-}
 
 .callToActionButton {
     padding: .7rem 4rem .7rem 4rem;

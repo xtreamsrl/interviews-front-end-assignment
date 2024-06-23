@@ -1,6 +1,6 @@
 export default
-    function DishIngredient() {
+    function DishIngredient({ dishIngredient }) {
     return (
-        <p className='dishIngredient'>Italian fresh pasta</p>
+        <p className='dishIngredient'>{dishIngredient}</p>
     )
 }
