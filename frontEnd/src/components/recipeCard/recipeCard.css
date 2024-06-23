@@ -65,7 +65,7 @@ button {
 
 .dishOverview {
     margin-top: .5rem;
-    margin-bottom: .7rem;
+    margin-bottom: 3rem;
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -76,8 +76,12 @@ button {
     margin-bottom: .1rem;
 }
 
-.dishCategories {
+.dishIngredients {
+    width: 25rem;
     color: #9e9a9a;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-top: -.5rem;
     margin-bottom: 1rem;
 }
@@ -93,16 +97,11 @@ button {
     font-size: 1.1rem;
 }
 
-.dishIngredients {
-    display: flex;
-    flex-direction: row;
-    margin-top: -1.4rem;
-    margin-bottom: 1rem;
 
-}
 
 .dishIngredient {
     margin-right: 1rem;
+    margin-bottom: -.5rem;
 }
 
 .dishTags {
@@ -156,13 +155,9 @@ button {
 }
 
 .actionBlock {
-    margin-top: 2rem;
+    margin-top: 6rem;
 }
 
-.dishPrice {
-    margin-top: 2.6rem;
-    margin-bottom: -.8rem;
-}
 
 .callToActionButton {
     padding: .7rem 4rem .7rem 4rem;
