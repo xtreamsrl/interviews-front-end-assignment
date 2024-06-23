@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RecipeCard from "../recipeCard/RecipeCard";
 import axios from 'axios'
 import './recipeList.css'
+import { getRecipes, getComments, getDifficulties, getDiets, getCuisines } from '../../utils/apiCalls.jsx';
 
 export default function RecipeList() {
     const [recipe, setRecipe] = useState([]);
@@ -16,36 +17,18 @@ export default function RecipeList() {
     const recipesPerPage = 10;
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setLoading(true);
-
-                const recipesResponse = await axios.get('http://localhost:8080/recipes');
-                setRecipe(recipesResponse.data);
-
-                const commentsResponse = await axios.get('http://localhost:8080/comments');
-                setComment(commentsResponse.data);
-
-                const difficultiesResponse = await axios.get('http://localhost:8080/difficulties');
-                setDifficulty(difficultiesResponse.data);
-
-                const dietsResponse = await axios.get('http://localhost:8080/diets');
-                setDiet(dietsResponse.data);
-
-                const cuisinesResponse = await axios.get('http://localhost:8080/cuisines');
-                setCuisine(cuisinesResponse.data);
-
-                setError(null);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
+        setLoading(true);
+        Promise.all([getRecipes(), getComments(), getDifficulties(), getDiets(), getCuisines()])
+            .then(([recipe, comment, difficultie, diet, cuisine]) => {
+                setRecipe(recipe);
+                setComment(comment);
+                setDifficulty(difficultie);
+                setDiet(diet);
+                setCuisine(cuisine);
+            })
+            .catch(err => setError(err))
+            .finally(() => setLoading(false));
     }, []);
-
 
 
     function getCurrentRecipe(recipeId) {
