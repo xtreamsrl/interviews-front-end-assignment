@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "../recipeCard/RecipeCard";
 import axios from 'axios'
+import './recipeList.css'
 
 export default function RecipeList() {
     const [recipe, setRecipe] = useState([]);
@@ -8,7 +9,9 @@ export default function RecipeList() {
     const [difficulty, setDifficulty] = useState([])
     const [diet, setDiet] = useState([])
     const [cuisine, setCuisine] = useState([])
-    const [ingredient, setIngredient] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const recipesPerPage = 10;
 
     useEffect(() => {
         axios.get('http://localhost:8080/recipes')
@@ -69,10 +72,24 @@ export default function RecipeList() {
         return recipeCuisine.name
     }
 
+    const indexOfLastRecipe = currentPage * recipesPerPage;
+    const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+    const currentRecipes = recipe.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+    const totalPages = Math.ceil(recipe.length / recipesPerPage);
+
+    function handlePageChange(pageNumber) {
+        setCurrentPage(pageNumber);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
     return (
-        <>
+        <div className="recipeList">
             {
-                recipe.map((dish) => {
+                currentRecipes.map((dish) => {
                     return <RecipeCard
                         key={dish.id}
                         dishName={dish.name}
@@ -86,7 +103,17 @@ export default function RecipeList() {
                     />
                 })
             }
-
-        </>
+            <div className="pagination">
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        onClick={() => handlePageChange(index + 1)}
+                        className={(index + 1 === currentPage ? 'active' : '') + "redButton"}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
+        </div>
     )
 }
