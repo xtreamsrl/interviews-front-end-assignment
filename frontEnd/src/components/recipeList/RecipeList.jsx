@@ -10,30 +10,42 @@ export default function RecipeList() {
     const [diet, setDiet] = useState([])
     const [cuisine, setCuisine] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const recipesPerPage = 10;
 
     useEffect(() => {
-        axios.get('http://localhost:8080/recipes')
-            .then(res => setRecipe(res.data))
-            .catch(err => console.log(err));
+        const fetchData = async () => {
+            try {
+                setLoading(true);
 
-        axios.get('http://localhost:8080/comments')
-            .then(res => setComment(res.data))
-            .catch(err => console.log(err));
+                const recipesResponse = await axios.get('http://localhost:8080/recipes');
+                setRecipe(recipesResponse.data);
 
-        axios.get('http://localhost:8080/difficulties')
-            .then(res => setDifficulty(res.data))
-            .catch(err => console.log(err));
+                const commentsResponse = await axios.get('http://localhost:8080/comments');
+                setComment(commentsResponse.data);
 
-        axios.get('http://localhost:8080/diets')
-            .then(res => setDiet(res.data))
-            .catch(err => console.log(err));
+                const difficultiesResponse = await axios.get('http://localhost:8080/difficulties');
+                setDifficulty(difficultiesResponse.data);
 
-        axios.get('http://localhost:8080/cuisines')
-            .then(res => setCuisine(res.data))
-            .catch(err => console.log(err));
+                const dietsResponse = await axios.get('http://localhost:8080/diets');
+                setDiet(dietsResponse.data);
+
+                const cuisinesResponse = await axios.get('http://localhost:8080/cuisines');
+                setCuisine(cuisinesResponse.data);
+
+                setError(null);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
     }, []);
+
 
 
     function getCurrentRecipe(recipeId) {
@@ -84,6 +96,14 @@ export default function RecipeList() {
             top: 0,
             behavior: 'smooth'
         });
+    }
+
+    if (loading) {
+        return <div className="userMessage"><h2>Loading...</h2></div>;
+    }
+
+    if (error) {
+        return <div><h2>Error: {error}</h2 ></div >;
     }
 
     return (
