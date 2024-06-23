@@ -1,0 +1,170 @@
+body {
+    font-size: 1.1rem;
+}
+
+button {
+    font-size: 1rem;
+
+    border-radius: 40px;
+    border-color: #717171;
+    padding: .5rem 1.6rem .5rem 1.6rem;
+}
+
+
+
+.redButton {
+    background-color: #f42f26;
+    border-width: 0;
+    color: #ffffff;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    margin: 0 auto 1.5rem auto;
+    top: 5rem;
+    height: 20rem;
+    width: 60rem;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0px 0px 18px #d0d0d0;
+}
+
+.cardLeft {
+    display: flex;
+    width: 33%;
+    height: 80%;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    text-align: center;
+    justify-content: flex-start;
+    text-align: center;
+    justify-content: center;
+}
+
+.dishImg {
+    width: 16rem;
+    height: 16rem;
+    border-radius: 20px;
+    overflow: hidden;
+    object-fit: cover;
+
+}
+
+.cardCenter {
+    width: 33%;
+    height: 80%;
+    margin-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+}
+
+.dishOverview {
+    margin-top: .5rem;
+    margin-bottom: .7rem;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.dishOverview>h2 {
+    margin-bottom: .1rem;
+}
+
+.dishCategories {
+    color: #9e9a9a;
+    margin-top: -.5rem;
+    margin-bottom: 1rem;
+}
+
+
+.dishCategory {
+    margin-bottom: -.7rem;
+}
+
+
+.dishType,
+.dishRating {
+    font-size: 1.1rem;
+}
+
+.dishIngredients {
+    display: flex;
+    flex-direction: row;
+    margin-top: -1.4rem;
+    margin-bottom: 1rem;
+
+}
+
+.dishIngredient {
+    margin-right: 1rem;
+}
+
+.dishTags {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.tag {
+    margin-right: .5rem;
+    background-color: #ffffff;
+    border-width: 2px;
+}
+
+.cardRight {
+    width: 33%;
+    height: 80%;
+    margin: .5rem 1.5rem;
+    text-align: right;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reviewsBlock {
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+
+}
+
+.dishRating {
+    margin-bottom: -.5rem;
+}
+
+.numberOfReviews {
+    color: #9e9a9a;
+    margin-top: .8rem;
+    font-size: .9rem;
+}
+
+.reviewsText {
+    margin-right: -.4rem;
+}
+
+.reviewsVote {
+    margin: 1.5rem 0 0 1rem;
+}
+
+.actionBlock {
+    margin-top: 2rem;
+}
+
+.dishPrice {
+    margin-top: 2.6rem;
+    margin-bottom: -.8rem;
+}
+
+.callToActionButton {
+    padding: .7rem 4rem .7rem 4rem;
+
+}

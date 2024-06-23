@@ -8,7 +8,7 @@ export default function RecipeCard() {
     return (
         <div className='card'>
             <div className='cardLeft'>
-                <img src="Beef-Tacos.jpg" className='dishImg'></img>
+                <img src="./Beef-Tacos.jpg" className='dishImg'></img>
             </div>
             <div className='cardCenter'>
                 <div className='dishOverview'>
