@@ -1,44 +1,8 @@
-body {
-    font-size: 1.1rem;
-}
-
-button {
-    font-size: 1rem;
-
-    border-radius: 40px;
-    border-color: #717171;
-    padding: .5rem 1.6rem .5rem 1.6rem;
-
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: transform;
-    transition-property: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-
-
-
-}
-
-button:hover {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-}
-
 .card:hover {
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
 }
 
-.redButton {
-    background-color: #f42f26;
-    border-width: 0;
-    color: #ffffff;
-}
-
-.redButton:hover {
-    background-color: #dc2a22;
-    -webkit-transform: scale(1.08);
-    transform: scale(1.08);
-}
 
 .card {
     display: flex;
@@ -47,7 +11,7 @@ button:hover {
     margin: 0 auto 1.5rem auto;
     top: 5rem;
     height: 20rem;
-    width: 60rem;
+    width: 100%;
     background: #ffffff;
     overflow: hidden;
     border-radius: 20px;
