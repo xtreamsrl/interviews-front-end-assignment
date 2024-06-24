@@ -40,3 +40,9 @@ button:hover {
   -webkit-transform: scale(1.08);
   transform: scale(1.08);
 }
+
+
+.pageBody {
+  display: flex;
+  flex-direction: row;
+}
