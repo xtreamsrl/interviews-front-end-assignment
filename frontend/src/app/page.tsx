@@ -2,73 +2,46 @@
 
 import { useEffect, useState } from "react";
 import { Recipe, Cuisine, Difficulty, Diet } from "../utils/types";
-import {
-  fetchCuisines,
-  fetchRecipes,
-  fetchDifficulties,
-  fetchDiets,
-} from "../utils/api";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { fetchRecipes } from "../features/recipes/recipesSlice";
+import { fetchCuisines } from "../features/cuisines/cuisinesSlice";
+import { fetchDifficulties } from "../features/difficulties/difficultiesSlice";
+import { fetchDiets } from "../features/diets/dietsSlice";
 
 import RecipeList from "../components/RecipeList";
 import SearchBar from "../components/SearchBar";
 import RecipeModal from "../components/RecipeModal";
 
 const Home = () => {
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
-  const [cuisines, setCuisines] = useState<Cuisine[]>([]);
-  const [selectedCuisineId, setSelectedCuisineId] = useState<Cuisine["id"]>("");
+  const dispatch = useAppDispatch();
+  const recipes = useAppSelector((state) => state.recipes.data);
+  const cuisines = useAppSelector((state) => state.cuisines.data);
+  const difficulties = useAppSelector((state) => state.difficulties.data);
+  const diets = useAppSelector((state) => state.diets.data);
+
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [difficulties, setDifficulties] = useState<Difficulty[]>([]);
-  const [selectedDifficultyId, setSelectedDifficultyId] =
-    useState<Difficulty["id"]>("");
-  const [diets, setDiets] = useState<Diet[]>([]);
-  const [selectedDietId, setSelectedDietId] = useState<Diet["id"]>("");
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
+  const [selectedCuisineId, setSelectedCuisineId] = useState<Cuisine["id"]>("");
+  const [selectedDifficultyId, setSelectedDifficultyId] =
+  useState<Difficulty["id"]>("");
+  const [selectedDietId, setSelectedDietId] = useState<Diet["id"]>("");
+  const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
 
   useEffect(() => {
-    const getRecipes = async () => {
-      try {
-        const data = await fetchRecipes();
-        setRecipes(data);
-        setFilteredRecipes(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    dispatch(fetchRecipes());
+    dispatch(fetchDiets());
+    dispatch(fetchDifficulties());
+    dispatch(fetchCuisines());
+  }, [dispatch]);
 
-    const getCuisines = async () => {
-      try {
-        const data = await fetchCuisines();
-        setCuisines(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    const getDifficulties = async () => {
-      try {
-        const data = await fetchDifficulties();
-        setDifficulties(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    const getDiets = async () => {
-      try {
-        const data = await fetchDiets();
-        setDiets(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getRecipes();
-    getCuisines();
-    getDifficulties();
-    getDiets();
-  }, []);
+  useEffect(() => {
+    filterRecipes(
+      searchQuery,
+      selectedCuisineId,
+      selectedDifficultyId,
+      selectedDietId
+    );
+  });
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -101,13 +74,15 @@ const Home = () => {
     difficultyId: Difficulty["id"],
     dietId: Diet["id"]
   ) => {
+    if (!recipes) return;
+
     const filtered = recipes.filter((recipe) => {
       const matchesQuery =
-        recipe.name.toLowerCase().includes(query) ||
+        recipe.name.toLowerCase().includes(query.toLowerCase()) ||
         recipe.ingredients.some((ingredient) =>
-          ingredient.toLowerCase().includes(query)
+          ingredient.toLowerCase().includes(query.toLowerCase())
         ) ||
-        recipe.instructions.toLowerCase().includes(query);
+        recipe.instructions.toLowerCase().includes(query.toLowerCase());
       const matchesCuisine = cuisineId === "" || recipe.cuisineId === cuisineId;
       const matchesDifficulty =
         difficultyId === "" || recipe.difficultyId === difficultyId;
@@ -132,10 +107,10 @@ const Home = () => {
       <SearchBar
         onSearch={handleSearch}
         onCuisineChange={handleCuisineChange}
-        cuisines={cuisines}
         onDifficultyChange={handleDifficultyChange}
-        difficulties={difficulties}
         onDietChange={handleDietChange}
+        cuisines={cuisines}
+        difficulties={difficulties}
         diets={diets}
       />
       <RecipeList recipes={filteredRecipes} onRecipeClick={handleRecipeClick} />
