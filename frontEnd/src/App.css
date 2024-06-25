@@ -45,3 +45,13 @@ button:hover {
   flex-direction: row;
 
 }
+
+
+/* TABLETS MEDIA */
+@media only screen and (max-width: 768px) {
+  button {
+
+    padding: .4rem 1.6rem .4rem 1.6rem;
+
+  }
+}

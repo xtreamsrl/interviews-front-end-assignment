@@ -121,3 +121,39 @@ select option:hover {
     border-radius: 20px;
     border: #f42f26;
 }
+
+
+
+
+@media only screen and (max-width: 1056px) {
+    .leftBar {
+        transform: translateX(-83%);
+        z-index: 3;
+    }
+
+    .leftBar.hidden {
+        transform: translateX(0);
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .leftBar {
+        transform: translateX(-90%);
+        z-index: 3;
+    }
+
+    .leftBar.hidden {
+        transform: translateX(0);
+    }
+
+    .toggleArrow {
+        position: absolute;
+        top: 1.9rem;
+        left: 21.5rem;
+        cursor: pointer;
+        z-index: 1;
+        transition: transform 0.3s ease-in-out;
+    }
+
+}
