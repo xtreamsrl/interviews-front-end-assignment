@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "../recipeCard/RecipeCard";
 import axios from 'axios'
-import './recipeList.css'
+import './RecipeList.css'
 import { getRecipes, getComments, getDifficulties, getDiets, getCuisines } from '../../utils/apiCalls.jsx';
 
 export default function RecipeList() {
@@ -14,7 +14,7 @@ export default function RecipeList() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const recipesPerPage = 10;
+    const recipesPerPage = 4;
 
     useEffect(() => {
         setLoading(true);

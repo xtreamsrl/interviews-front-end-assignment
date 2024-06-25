@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+input,
+select {
+    border-radius: 20px;
+    padding: .5rem 1.3rem .5rem 1.3rem;
+}
+
+select option:hover {
+    background-color: #f42f26 !important;
+}
+
+.input {
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+.leftBar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 24rem;
+    height: 100%;
+    align-items: flex-start;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 18px #d0d0d0;
+    margin: 1rem 8rem 0 0;
+    margin-top: 4rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.leftBar.hidden {
+    transform: translateX(-83%);
+}
+
+
+.toggleArrow {
+    position: absolute;
+    top: 1.9rem;
+    left: 20.5rem;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+.logoImg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logoImg.rotate {
+    transform: rotate(180deg);
+}
+
+.filtersForm {
+    margin-left: 2.7rem;
+    width: 100%;
+}
+
+.hideArrow {
+    margin: 1rem 0 1rem -.7rem;
+}
+
+.discoverForm {
+    display: flex;
+    flex-direction: column;
+    margin: 0 7rem 5rem auto;
+}
+
+.formLabel {
+    font-family: Roboto, Helvetica, sans-serif;
+    font-weight: 500;
+    margin-bottom: .4rem;
+}
+
+.discoverForm label {
+    display: flex;
+    flex-direction: column;
+}
+
+.submitButton {
+    margin-top: 1.5rem;
+    background-color: #f42f26;
+    border: 0;
+    transition-duration: 0.3s;
+    transition-property: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.checkboxSection {
+    display: flex;
+    flex-direction: column;
+    margin: 0 11rem 0 2.5rem;
+}
+
+.bottomPanel {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipeFilters>h2 {
+    margin-bottom: .8rem;
+}
+
+.filtersCheckbox {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.difficultyFilters>h2 {
+    width: 15rem;
+}
+
+.sliderComponent {
+    width: 60%;
+    padding: 0;
+    accent-color: #f42f26;
+    border-radius: 20px;
+    border: #f42f26;
+}

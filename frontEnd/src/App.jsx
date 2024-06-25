@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <div className='pageBody'>
         <LeftBar />
-        <RecipeList />
+        <RecipeList className='recipeListComponent' />
       </div>
     </div>
   )

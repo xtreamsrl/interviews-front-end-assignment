@@ -1,6 +1,7 @@
 .recipeList {
     width: 60rem;
-    margin: 6rem auto 2rem auto;
+    margin: 6rem 17rem 2rem auto;
+    transition: transform 0.3s ease-in-out;
 }
 
 .userMessage {
@@ -8,4 +9,8 @@
     font-size: 2rem;
     color: #f42f26;
     text-align: center;
+}
+
+.hidden~.recipeList {
+    transform: translateX(-18%);
 }

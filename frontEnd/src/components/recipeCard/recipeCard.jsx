@@ -17,7 +17,6 @@ export default function RecipeCard({ dishName, dishImg, dishRating, dishReviews,
                         <div className='dishIngredients'>
                             {
                                 dishIngredients.map((ingredient, i) => {
-                                    console.log(i)
                                     return <DishIngredient
                                         key={i}
                                         dishIngredient={ingredient} />

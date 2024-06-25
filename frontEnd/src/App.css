@@ -23,8 +23,8 @@ button {
 }
 
 button:hover {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 .redButton {
@@ -35,12 +35,13 @@ button:hover {
 
 .redButton:hover {
   background-color: #dc2a22;
-  -webkit-transform: scale(1.08);
-  transform: scale(1.08);
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 
 .pageBody {
   display: flex;
   flex-direction: row;
+
 }
