@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RecipeCard from "../recipeCard/RecipeCard";
+import RecipeCard from "../recipeCard/RecipeCard.jsx";
 import axios from 'axios'
 import './RecipeList.css'
 import { getRecipes, getComments, getDifficulties, getDiets, getCuisines } from '../../utils/apiCalls.jsx';

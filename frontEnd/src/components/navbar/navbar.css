@@ -60,3 +60,24 @@
     padding-left: 2.5rem;
     padding-right: 2.5rem;
 }
+
+
+@media only screen and (max-width: 1056px) {
+    .rightElems {
+        margin-right: 3rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .navigationMenu {
+        display: none;
+    }
+
+    .rightElems .redButton {
+        display: none;
+    }
+
+    .rightElems {
+        margin-right: 3rem;
+    }
+}

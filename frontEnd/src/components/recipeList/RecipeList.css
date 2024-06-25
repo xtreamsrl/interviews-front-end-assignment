@@ -1,5 +1,5 @@
 .recipeList {
-    width: 60rem;
+    width: 60%;
     margin: 6rem 17rem 2rem auto;
     transition: transform 0.3s ease-in-out;
 }
@@ -13,4 +13,81 @@
 
 .hidden~.recipeList {
     transform: translateX(-18%);
+}
+
+.pagination {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+@media only screen and (max-width: 1919px) {
+
+    .recipeList {
+        width: 60%;
+        margin: 6rem 5% 2rem auto;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .hidden~.recipeList {
+        transform: translateX(4%);
+    }
+}
+
+@media only screen and (max-width: 1919px) {
+    .recipeList {
+        margin: 6rem 10% 2rem auto;
+    }
+
+
+    .hidden~.recipeList {
+        transform: translateX(-15%);
+    }
+}
+
+/* TABLET */
+@media only screen and (max-width: 1056px) {
+
+    .recipeList {
+        width: 30rem;
+        margin: 6rem auto 2rem auto;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .hidden~.recipeList {
+        transform: translateX(4%);
+    }
+}
+
+
+/* PHONE */
+@media only screen and (max-width: 500px) {
+
+    .recipeList {
+        width: 30rem;
+        margin: 6rem -2.2em 2rem auto;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .hidden~.recipeList {
+        transform: translateX(4%);
+    }
+}
+
+
+
+
+@media only screen and (min-width: 2000px) {
+
+    .recipeList {
+        width: 60%;
+        margin: 6rem 15% 2rem auto;
+    }
+
+    .hidden~.recipeList {
+        transform: translateX(-10%);
+    }
 }

@@ -160,3 +160,161 @@
     padding: .7rem 4rem .7rem 4rem;
 
 }
+
+/* SMALL SCREENS */
+@media only screen and (max-width: 1356px) {
+    .dishImg {
+        width: 11rem;
+        height: 11rem;
+    }
+
+    .cardCenter {
+        margin-left: -2rem;
+    }
+}
+
+@media only screen and (max-width: 1056px) {
+
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        height: 44rem;
+        width: 90%;
+    }
+
+    .cardContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cardLeft {
+        width: 80%;
+        height: 80%;
+        margin: 5rem auto 0 auto;
+    }
+
+    .dishImg {
+        width: 15rem;
+        height: 15rem;
+
+    }
+
+
+    .cardCenter {
+        margin: -.5rem auto 0 auto;
+        width: 80%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+
+    .dishOverview {
+        text-align: left;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4rem;
+    }
+
+    .dishIngredients {
+        width: 90%;
+    }
+
+
+    .cardRight {
+        width: 80%;
+        height: 80%;
+        margin: 5rem auto;
+        text-align: left;
+        flex-direction: column;
+    }
+
+    .reviewsBlock {
+        margin-top: -.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+
+    .reviewsVote {
+        display: none;
+    }
+
+    .numberOfReviews {
+        display: none;
+
+    }
+
+    .actionBlock {
+        margin: 0 auto 0 auto;
+    }
+
+
+
+
+    .dishDifficulty {
+        display: none;
+    }
+
+    .callToActionButton {
+        padding: .7rem 4rem .7rem 4rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-left: 2.5rem;
+        margin: 0 auto 0 auto;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+        height: 44rem;
+        width: 80%;
+
+    }
+
+    .dishOverview {
+        text-align: left;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4rem;
+    }
+
+
+}
+
+@media only screen and (min-width: 2000px) {
+
+
+    .card {
+        height: 18rem;
+        width: 100%;
+    }
+
+    .cardLeft {
+        width: 20%;
+        height: 80%;
+        margin: 0 auto 0 auto;
+    }
+
+    .cardCenter {
+        margin-left: auto;
+        margin-right: 5rem;
+    }
+
+    .dishImg {
+        width: 15rem;
+        height: 15rem;
+    }
+}
