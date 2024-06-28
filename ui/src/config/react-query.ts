@@ -2,7 +2,6 @@ import { QueryClient } from '@tanstack/react-query'
 import { isAxiosError } from 'axios'
 import { toast } from 'sonner'
 
-
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -14,7 +13,7 @@ export const queryClient = new QueryClient({
       onError: (error) => {
         if (!isAxiosError(error)) return
 
-        toast.error("Unknown API error")
+        toast.error('Unknown API error')
       },
     },
   },
