@@ -91,6 +91,20 @@ export const RecipeList = () => {
                 }}
               />
             </div>
+
+            <Button
+              onClick={() => {
+                setQuery({
+                  page: query.page ?? 1,
+                  cuisineId: undefined,
+                  dietId: undefined,
+                  difficultyId: undefined,
+                  q: undefined,
+                })
+              }}
+            >
+              Clear all
+            </Button>
           </div>
         </div>
       </div>
