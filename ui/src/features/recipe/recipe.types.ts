@@ -32,3 +32,10 @@ export type RecipeListRequest = {
   difficultyId?: string
   _expand?: string[]
 }
+
+export type DifficultyListResponse = Difficulty[]
+
+export type Difficulty = {
+  id: string
+  name: string
+}

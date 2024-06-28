@@ -1,30 +1,34 @@
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import { useState } from 'react'
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params'
 import { Button } from '../../components/button'
 import { Input } from '../../components/input'
 import { Label } from '../../components/label'
 import { cn } from '../../utils'
-import { useRecipeList } from './recipe.queries'
+import { useDifficultyList, useRecipeList } from './recipe.queries'
 import { Recipe } from './recipe.types'
 
 export const RecipeList = () => {
   const [query, setQuery] = useQueryParams({
     page: NumberParam,
+    difficultyId: StringParam,
     q: StringParam,
   })
   const page = query.page ?? 1
   const { data: recipeList } = useRecipeList({
     _page: page,
+    difficultyId: query.difficultyId,
     q: query.q,
   })
 
   const [searchQuery, setSearchQuery] = useState('')
+  const [difficultyId, setDifficultyId] = useState('')
 
   if (!recipeList) return null
 
   return (
     <div className="flex h-screen w-full bg-white">
-      <div className="w-64 shrink-0 border-r-2 bg-orange-200 p-6">
+      <div className="w-64 shrink-0 border-r-2 bg-orange-50 p-6 shadow-inner">
         <div className="flex h-full flex-col justify-between">
           <div className="flex flex-col gap-4">
             <div>
@@ -37,11 +41,18 @@ export const RecipeList = () => {
                 }}
               />
             </div>
+            <div>
+              <Label>Difficulty</Label>
+              <DifficultySelectableBadges
+                value={difficultyId}
+                setValue={(value) => setDifficultyId(value)}
+              />
+            </div>
           </div>
 
           <Button
             onClick={() => {
-              setQuery({ q: searchQuery })
+              setQuery({ q: searchQuery, difficultyId })
             }}
           >
             Apply
@@ -71,6 +82,41 @@ export const RecipeList = () => {
         </div>
       </div>
     </div>
+  )
+}
+
+const DifficultySelectableBadges = ({
+  value,
+  setValue,
+}: {
+  value: string
+  setValue: (value: string) => void
+}) => {
+  const { data: difficultyList } = useDifficultyList()
+
+  if (!difficultyList) return null
+
+  return (
+    <ToggleGroup.Root
+      className="flex flex-wrap gap-2"
+      type="single"
+      aria-label="Text alignment"
+      value={value}
+      onValueChange={(value) => setValue(value)}
+    >
+      {difficultyList.map((difficulty) => (
+        <ToggleGroup.Item
+          key={difficulty.id}
+          value={difficulty.id}
+          aria-label={difficulty.name}
+        >
+          <DifficultyBadge
+            difficulty={difficulty.name}
+            isSelected={value === difficulty.id}
+          />
+        </ToggleGroup.Item>
+      ))}
+    </ToggleGroup.Root>
   )
 }
 
@@ -129,18 +175,44 @@ const difficultyBorder: { [key: string]: string } = {
   Hard: 'border-red-200',
 }
 
+const selectedDifficultyColors: { [key: string]: string } = {
+  Easy: 'bg-green-600',
+  Medium: 'bg-yellow-600',
+  Hard: 'bg-red-600',
+}
+
+const selectedDifficultyShadows: { [key: string]: string } = {
+  Easy: 'shadow-green-600',
+  Medium: 'shadow-yellow-600',
+  Hard: 'shadow-red-600',
+}
+
+const selectedDifficultyBorder: { [key: string]: string } = {
+  Easy: 'border-green-400',
+  Medium: 'border-yellow-400',
+  Hard: 'border-red-400',
+}
+
 const DifficultyBadge = ({
   difficulty,
+  isSelected,
 }: {
   difficulty: Recipe['difficulty']['name']
+  isSelected?: boolean
 }) => {
   return (
     <div
       className={cn(
-        'w-16 rounded-full border px-2 py-1 text-center text-xs font-semibold shadow-sm',
-        difficultyBorder[difficulty],
-        difficultyShadows[difficulty],
-        difficultyColors[difficulty] ?? 'bg-gray-500'
+        'w-16 rounded-full border px-1.5 py-0.5 text-center text-xs font-semibold shadow-sm',
+        isSelected
+          ? 'border-gray-800 text-white'
+          : difficultyBorder[difficulty],
+        isSelected
+          ? selectedDifficultyShadows[difficulty]
+          : difficultyShadows[difficulty],
+        isSelected
+          ? selectedDifficultyColors[difficulty]
+          : difficultyColors[difficulty] ?? 'bg-gray-500'
       )}
     >
       {difficulty}

@@ -2,7 +2,11 @@ import { useQuery } from '@tanstack/react-query'
 import { AxiosResponse } from 'axios'
 import { axiosInstance } from '../../config/axios'
 import { flatObjToSerializableUrlParams } from '../../utils'
-import { RecipeListRequest, RecipeListResponse } from './recipe.types'
+import {
+  DifficultyListResponse,
+  RecipeListRequest,
+  RecipeListResponse,
+} from './recipe.types'
 
 const getRecipeList = async ({ _expand, ...params }: RecipeListRequest) => {
   const response = await axiosInstance.get<
@@ -28,4 +32,18 @@ export const useRecipeList = ({
         _expand: ['cuisine', 'difficulty', 'diet'],
         ...filter,
       }),
+  })
+
+export const getDifficultyList = async () => {
+  const response = await axiosInstance.get<
+    unknown,
+    AxiosResponse<DifficultyListResponse>
+  >(`/difficulties`)
+  return response.data
+}
+
+export const useDifficultyList = () =>
+  useQuery({
+    queryKey: ['difficulty-list'],
+    queryFn: () => getDifficultyList(),
   })
