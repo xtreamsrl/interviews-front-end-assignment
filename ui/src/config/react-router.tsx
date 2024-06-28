@@ -1,7 +1,8 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
-import { RecipeList } from '../features/recipe/list/RecipeList'
+import { RecipeCreate } from '../features/recipe/RecipeCreate'
+import { RecipeList } from '../features/recipe/RecipeList'
 
 export const router = createBrowserRouter([
   {
@@ -15,5 +16,9 @@ export const router = createBrowserRouter([
         <RecipeList />
       </QueryParamProvider>
     ),
+  },
+  {
+    path: 'new',
+    element: <RecipeCreate />,
   },
 ])

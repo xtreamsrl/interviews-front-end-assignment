@@ -1,17 +1,15 @@
-import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import { Button } from '../../../components/button'
-import { Combobox } from '../../../components/combobox'
-import { Input } from '../../../components/input'
-import { Label } from '../../../components/label'
-import {
-  useCuisineList,
-  useDietList,
-  useDifficultyList,
-  useRecipeList,
-} from '../recipe.queries'
-import { DifficultyBadge } from './components/DifficultyBadge'
+import { Link } from 'react-router-dom'
+import { Button } from '../../components/button'
+import { Input } from '../../components/input'
+import { Label } from '../../components/label'
 import { RecipeCard } from './components/RecipeCard'
-import { useRecipeListPaginationAndFilters } from './recipeList.hooks'
+import {
+  CuisineSelector,
+  DietSelector,
+  DifficultySelectableBadges,
+} from './components/Selectors'
+import { useRecipeListPaginationAndFilters } from './recipe.hooks'
+import { useRecipeList } from './recipe.queries'
 
 export const RecipeList = () => {
   const { filters, clearFilters, setFilter, incrementPage, decrementPage } =
@@ -48,19 +46,22 @@ export const RecipeList = () => {
             <div className="flex flex-col gap-2">
               <Label>Cuisine</Label>
               <CuisineSelector
-                cuisineId={filters.cuisineId}
-                setCuisineId={(value) => setFilter('cuisineId', value)}
+                value={filters.cuisineId}
+                setValue={(value) => setFilter('cuisineId', value)}
               />
             </div>
             <div className="flex flex-col gap-2">
               <Label>Diet</Label>
               <DietSelector
-                dietId={filters.dietId}
-                setDietId={(value) => setFilter('dietId', value)}
+                value={filters.dietId}
+                setValue={(value) => setFilter('dietId', value)}
               />
             </div>
             <Button onClick={() => clearFilters()}>Clear all</Button>
           </div>
+          <Button asChild variant="destructive">
+            <Link to="/new">New Recipe</Link>
+          </Button>
         </div>
       </div>
 
@@ -102,86 +103,5 @@ export const RecipeList = () => {
         </div>
       )}
     </div>
-  )
-}
-
-const DifficultySelectableBadges = ({
-  value,
-  setValue,
-}: {
-  value: string
-  setValue: (value: string) => void
-}) => {
-  const { data: difficultyList } = useDifficultyList()
-
-  if (!difficultyList) return null
-
-  return (
-    <ToggleGroup.Root
-      className="flex flex-wrap gap-2"
-      type="single"
-      aria-label="Text alignment"
-      value={value}
-      onValueChange={(value) => setValue(value)}
-    >
-      {difficultyList.map((difficulty) => (
-        <ToggleGroup.Item
-          key={difficulty.id}
-          value={difficulty.id}
-          aria-label={difficulty.name}
-        >
-          <DifficultyBadge
-            difficulty={difficulty.name}
-            isSelected={value === difficulty.id}
-          />
-        </ToggleGroup.Item>
-      ))}
-    </ToggleGroup.Root>
-  )
-}
-
-const CuisineSelector = ({
-  cuisineId,
-  setCuisineId,
-}: {
-  cuisineId: string
-  setCuisineId: (value: string) => void
-}) => {
-  const { data: cuisineList } = useCuisineList()
-
-  if (!cuisineList) return null
-
-  return (
-    <Combobox
-      value={cuisineId}
-      setValue={setCuisineId}
-      options={cuisineList.map((cuisine) => ({
-        label: cuisine.name,
-        value: cuisine.id,
-      }))}
-    />
-  )
-}
-
-const DietSelector = ({
-  dietId,
-  setDietId,
-}: {
-  dietId: string
-  setDietId: (value: string) => void
-}) => {
-  const { data: dietList } = useDietList()
-
-  if (!dietList) return null
-
-  return (
-    <Combobox
-      value={dietId}
-      setValue={setDietId}
-      options={dietList.map((diet) => ({
-        label: diet.name,
-        value: diet.id,
-      }))}
-    />
   )
 }

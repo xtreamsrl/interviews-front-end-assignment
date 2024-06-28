@@ -1,11 +1,13 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { AxiosResponse } from 'axios'
 import { axiosInstance } from '../../config/axios'
+import { queryClient } from '../../config/react-query'
 import { flatObjToSerializableUrlParams } from '../../utils'
 import {
   CuisineListResponse,
   DietListResponse,
   DifficultyListResponse,
+  RecipeCreateRequest,
   RecipeListRequest,
   RecipeListResponse,
 } from './recipe.types'
@@ -77,3 +79,19 @@ export const useDietList = () =>
     queryKey: ['diet-list'],
     queryFn: () => getDietList(),
   })
+
+const createRecipe = async (data: RecipeCreateRequest) => {
+  const response = await axiosInstance.post('/recipes', data)
+  return response.data
+}
+
+export const useRecipeCreateMutation = () => {
+  return useMutation({
+    mutationFn: createRecipe,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['recipe-list'],
+      })
+    },
+  })
+}

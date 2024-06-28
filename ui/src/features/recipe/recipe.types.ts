@@ -53,3 +53,12 @@ export type Diet = {
   id: string
   name: string
 }
+
+export type RecipeCreateRequest = {
+  name: string
+  ingredients: string[]
+  instructions: string
+  cuisineId: string
+  dietId: string
+  difficultyId: string
+}

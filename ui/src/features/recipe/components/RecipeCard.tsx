@@ -1,4 +1,4 @@
-import { Recipe } from '../../recipe.types'
+import { Recipe } from '../recipe.types'
 import { DifficultyBadge } from './DifficultyBadge'
 
 export const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
