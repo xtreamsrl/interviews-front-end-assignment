@@ -2,7 +2,13 @@ import { useQuery } from '@tanstack/react-query'
 import { AxiosResponse } from 'axios'
 import { axiosInstance } from '../../config/axios'
 import { flatObjToSerializableUrlParams } from '../../utils'
-import { RecipeListRequest, RecipeListResponse } from './recipe.types'
+import {
+  CuisineListResponse,
+  DietListResponse,
+  DifficultyListResponse,
+  RecipeListRequest,
+  RecipeListResponse,
+} from './recipe.types'
 
 const getRecipeList = async ({ _expand, ...params }: RecipeListRequest) => {
   const response = await axiosInstance.get<
@@ -28,4 +34,46 @@ export const useRecipeList = ({
         _expand: ['cuisine', 'difficulty', 'diet'],
         ...filter,
       }),
+  })
+
+export const getDifficultyList = async () => {
+  const response = await axiosInstance.get<
+    unknown,
+    AxiosResponse<DifficultyListResponse>
+  >(`/difficulties`)
+  return response.data
+}
+
+export const useDifficultyList = () =>
+  useQuery({
+    queryKey: ['difficulty-list'],
+    queryFn: () => getDifficultyList(),
+  })
+
+export const getCuisineList = async () => {
+  const response = await axiosInstance.get<
+    unknown,
+    AxiosResponse<CuisineListResponse>
+  >(`/cuisines`)
+  return response.data
+}
+
+export const useCuisineList = () =>
+  useQuery({
+    queryKey: ['cuisine-list'],
+    queryFn: () => getCuisineList(),
+  })
+
+export const getDietList = async () => {
+  const response = await axiosInstance.get<
+    unknown,
+    AxiosResponse<DietListResponse>
+  >(`/diets`)
+  return response.data
+}
+
+export const useDietList = () =>
+  useQuery({
+    queryKey: ['diet-list'],
+    queryFn: () => getDietList(),
   })
