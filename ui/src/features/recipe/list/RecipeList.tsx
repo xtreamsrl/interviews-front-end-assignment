@@ -3,14 +3,14 @@ import { Button } from '../../../components/button'
 import { Combobox } from '../../../components/combobox'
 import { Input } from '../../../components/input'
 import { Label } from '../../../components/label'
-import { cn } from '../../../utils'
 import {
   useCuisineList,
   useDietList,
   useDifficultyList,
   useRecipeList,
 } from '../recipe.queries'
-import { Recipe } from '../recipe.types'
+import { DifficultyBadge } from './components/DifficultyBadge'
+import { RecipeCard } from './components/RecipeCard'
 import { useRecipeListPaginationAndFilters } from './recipeList.hooks'
 
 export const RecipeList = () => {
@@ -30,7 +30,7 @@ export const RecipeList = () => {
       <div className="w-72 shrink-0 border-r-2 bg-orange-50 p-6 shadow-inner">
         <div className="flex h-full flex-col justify-between">
           <div className="flex flex-col gap-4">
-            <div>
+            <div className="flex flex-col gap-2">
               <Label>Search</Label>
               <Input
                 placeholder="Search"
@@ -45,7 +45,6 @@ export const RecipeList = () => {
                 setValue={(value) => setFilter('difficultyId', value)}
               />
             </div>
-
             <div className="flex flex-col gap-2">
               <Label>Cuisine</Label>
               <CuisineSelector
@@ -53,7 +52,6 @@ export const RecipeList = () => {
                 setCuisineId={(value) => setFilter('cuisineId', value)}
               />
             </div>
-
             <div className="flex flex-col gap-2">
               <Label>Diet</Label>
               <DietSelector
@@ -61,7 +59,6 @@ export const RecipeList = () => {
                 setDietId={(value) => setFilter('dietId', value)}
               />
             </div>
-
             <Button onClick={() => clearFilters()}>Clear all</Button>
           </div>
         </div>
@@ -186,105 +183,5 @@ const DietSelector = ({
         value: diet.id,
       }))}
     />
-  )
-}
-
-const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
-  return (
-    <div className="@container h-full min-w-64">
-      <div className="@xs:flex-row @sm:p-5 flex h-full flex-col items-center gap-4 rounded-2xl border border-stone-300 bg-white p-4 shadow-md">
-        <div className="@sm:size-32 @sm:min-w-32 @xs:size-24 @xs:min-w-24 flex size-40 w-full min-w-40 items-center justify-center overflow-hidden rounded-xl border border-stone-300">
-          <img
-            src={`http://localhost:8080${recipe.image}`}
-            alt={recipe.name}
-            loading="lazy"
-            className="size-full object-cover"
-          />
-        </div>
-        <div className="@sm:size-full flex flex-col justify-between">
-          <div>
-            <div className="@xs:flex-row @xs:items-center flex w-full flex-col-reverse items-start justify-between">
-              <div className="@sm:text-2xl text-xl font-bold">
-                {recipe.name}
-              </div>
-              <div>
-                <DifficultyBadge difficulty={recipe.difficulty.name} />
-              </div>
-            </div>
-            <div className="@sm:text-base flex gap-1 text-sm">
-              <span>{recipe.cuisine.name}</span>
-              <span>⋅</span>
-              <span>{recipe.diet.name}</span>
-            </div>
-          </div>
-          <div className="@sm:text-base @xs:pt-0 line-clamp-2 pt-4 text-sm text-gray-600">
-            {recipe.ingredients.join(', ')}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const difficultyColors: { [key: string]: string } = {
-  Easy: 'bg-green-300',
-  Medium: 'bg-yellow-300',
-  Hard: 'bg-red-300',
-}
-
-const difficultyShadows: { [key: string]: string } = {
-  Easy: 'shadow-green-300',
-  Medium: 'shadow-yellow-300',
-  Hard: 'shadow-red-300',
-}
-
-const difficultyBorder: { [key: string]: string } = {
-  Easy: 'border-green-200',
-  Medium: 'border-yellow-200',
-  Hard: 'border-red-200',
-}
-
-const selectedDifficultyColors: { [key: string]: string } = {
-  Easy: 'bg-green-600',
-  Medium: 'bg-yellow-600',
-  Hard: 'bg-red-600',
-}
-
-const selectedDifficultyShadows: { [key: string]: string } = {
-  Easy: 'shadow-green-600',
-  Medium: 'shadow-yellow-600',
-  Hard: 'shadow-red-600',
-}
-
-// const selectedDifficultyBorder: { [key: string]: string } = {
-//   Easy: 'border-green-400',
-//   Medium: 'border-yellow-400',
-//   Hard: 'border-red-400',
-// }
-
-const DifficultyBadge = ({
-  difficulty,
-  isSelected,
-}: {
-  difficulty: Recipe['difficulty']['name']
-  isSelected?: boolean
-}) => {
-  return (
-    <div
-      className={cn(
-        'w-16 rounded-full border px-1.5 py-0.5 text-center text-xs font-semibold shadow-sm',
-        isSelected
-          ? 'border-gray-800 text-white'
-          : difficultyBorder[difficulty],
-        isSelected
-          ? selectedDifficultyShadows[difficulty]
-          : difficultyShadows[difficulty],
-        isSelected
-          ? selectedDifficultyColors[difficulty]
-          : difficultyColors[difficulty] ?? 'bg-gray-500'
-      )}
-    >
-      {difficulty}
-    </div>
   )
 }
