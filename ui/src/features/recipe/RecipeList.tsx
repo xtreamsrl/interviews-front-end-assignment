@@ -1,30 +1,34 @@
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import { useState } from 'react'
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params'
 import { Button } from '../../components/button'
+import { Combobox } from '../../components/combobox'
 import { Input } from '../../components/input'
 import { Label } from '../../components/label'
 import { cn } from '../../utils'
-import { useDifficultyList, useRecipeList } from './recipe.queries'
+import {
+  useCuisineList,
+  useDietList,
+  useDifficultyList,
+  useRecipeList,
+} from './recipe.queries'
 import { Recipe } from './recipe.types'
 
 export const RecipeList = () => {
   const [query, setQuery] = useQueryParams({
     page: NumberParam,
     difficultyId: StringParam,
+    cuisineId: StringParam,
+    dietId: StringParam,
     q: StringParam,
   })
   const page = query.page ?? 1
   const { data: recipeList } = useRecipeList({
     _page: page,
     difficultyId: query.difficultyId,
+    cuisineId: query.cuisineId,
+    dietId: query.dietId,
     q: query.q,
   })
-
-  const [searchQuery, setSearchQuery] = useState('')
-  const [difficultyId, setDifficultyId] = useState('')
-
-  if (!recipeList) return null
 
   return (
     <div className="flex h-screen w-full bg-white">
@@ -35,52 +39,110 @@ export const RecipeList = () => {
               <Label>Search</Label>
               <Input
                 placeholder="Search"
-                value={searchQuery}
+                value={query.q}
                 onChange={(e) => {
-                  setSearchQuery(e.target.value)
+                  const value = e.target.value
+                  if (value === '') {
+                    setQuery({ q: undefined })
+                    return
+                  }
+                  setQuery({ q: e.target.value })
                 }}
               />
             </div>
             <div>
               <Label>Difficulty</Label>
               <DifficultySelectableBadges
-                value={difficultyId}
-                setValue={(value) => setDifficultyId(value)}
+                value={query.difficultyId}
+                setValue={(value) => {
+                  if (value === '') {
+                    setQuery({ difficultyId: undefined })
+                    return
+                  }
+                  setQuery({ difficultyId: value })
+                }}
+              />
+            </div>
+
+            <div>
+              <Label>Cuisine</Label>
+              <CuisineSelector
+                cuisineId={query.cuisineId}
+                setCuisineId={(value) => {
+                  if (value === '') {
+                    setQuery({ cuisineId: undefined })
+                    return
+                  }
+                  setQuery({ cuisineId: value })
+                }}
+              />
+            </div>
+
+            <div>
+              <Label>Diet</Label>
+              <DietSelector
+                dietId={query.dietId}
+                setDietId={(value) => {
+                  if (value === '') {
+                    setQuery({ dietId: undefined })
+                    return
+                  }
+                  setQuery({ dietId: value })
+                }}
               />
             </div>
           </div>
-
-          <Button
-            onClick={() => {
-              setQuery({ q: searchQuery, difficultyId })
-            }}
-          >
-            Apply
-          </Button>
         </div>
       </div>
 
-      <div className="flex size-full flex-col gap-4 p-6">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
-          {recipeList.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
-          ))}
+      {recipeList && (
+        <div className="flex size-full flex-col gap-4 p-6">
+          {recipeList.length === 0 ? (
+            <div className="flex h-full flex-col items-center justify-center gap-4">
+              <div className="text-center text-xl font-bold">
+                No recipe found.
+              </div>
+              <div className="text-center text-sm text-gray-600">
+                No recipe found with the current filter.
+              </div>
+              <Button
+                onClick={() => {
+                  setQuery(
+                    {
+                      page: query.page ?? 1,
+                    },
+                    'replace'
+                  )
+                }}
+              >
+                Reset
+              </Button>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+                {recipeList.map((recipe) => (
+                  <RecipeCard key={recipe.id} recipe={recipe} />
+                ))}
+              </div>
+              <div className="flex justify-between">
+                <Button
+                  onClick={() => setQuery({ page: page - 1 })}
+                  disabled={page === 1}
+                >
+                  Prev
+                </Button>
+                <Button
+                  onClick={() => setQuery({ page: page + 1 })}
+                  disabled={recipeList.length < 10}
+                >
+                  Next
+                </Button>
+              </div>
+            </>
+          )}
         </div>
-        <div className="flex justify-between">
-          <Button
-            onClick={() => setQuery({ page: page - 1 })}
-            disabled={page === 1}
-          >
-            Prev
-          </Button>
-          <Button
-            onClick={() => setQuery({ page: page + 1 })}
-            disabled={recipeList.length < 10}
-          >
-            Next
-          </Button>
-        </div>
-      </div>
+      )}
     </div>
   )
 }
@@ -117,6 +179,52 @@ const DifficultySelectableBadges = ({
         </ToggleGroup.Item>
       ))}
     </ToggleGroup.Root>
+  )
+}
+
+const CuisineSelector = ({
+  cuisineId,
+  setCuisineId,
+}: {
+  cuisineId: string
+  setCuisineId: (value: string) => void
+}) => {
+  const { data: cuisineList } = useCuisineList()
+
+  if (!cuisineList) return null
+
+  return (
+    <Combobox
+      value={cuisineId}
+      setValue={setCuisineId}
+      options={cuisineList.map((cuisine) => ({
+        label: cuisine.name,
+        value: cuisine.id,
+      }))}
+    />
+  )
+}
+
+const DietSelector = ({
+  dietId,
+  setDietId,
+}: {
+  dietId: string
+  setDietId: (value: string) => void
+}) => {
+  const { data: dietList } = useDietList()
+
+  if (!dietList) return null
+
+  return (
+    <Combobox
+      value={dietId}
+      setValue={setDietId}
+      options={dietList.map((diet) => ({
+        label: diet.name,
+        value: diet.id,
+      }))}
+    />
   )
 }
 
@@ -187,11 +295,11 @@ const selectedDifficultyShadows: { [key: string]: string } = {
   Hard: 'shadow-red-600',
 }
 
-const selectedDifficultyBorder: { [key: string]: string } = {
-  Easy: 'border-green-400',
-  Medium: 'border-yellow-400',
-  Hard: 'border-red-400',
-}
+// const selectedDifficultyBorder: { [key: string]: string } = {
+//   Easy: 'border-green-400',
+//   Medium: 'border-yellow-400',
+//   Hard: 'border-red-400',
+// }
 
 const DifficultyBadge = ({
   difficulty,

@@ -12,7 +12,9 @@ export function flatObjToSerializableUrlParams(
 
   for (const key in obj) {
     const value = obj[key]
-    result[key] = typeof value === 'string' ? value : String(value)
+    if (value !== undefined || value === '') {
+      result[key] = typeof value === 'string' ? value : String(value)
+    }
   }
 
   return result
