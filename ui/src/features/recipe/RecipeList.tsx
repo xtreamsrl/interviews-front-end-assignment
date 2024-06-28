@@ -1,5 +1,8 @@
-import { NumberParam, useQueryParams } from 'use-query-params'
+import { useState } from 'react'
+import { NumberParam, StringParam, useQueryParams } from 'use-query-params'
 import { Button } from '../../components/button'
+import { Input } from '../../components/input'
+import { Label } from '../../components/label'
 import { cn } from '../../utils'
 import { useRecipeList } from './recipe.queries'
 import { Recipe } from './recipe.types'
@@ -7,34 +10,65 @@ import { Recipe } from './recipe.types'
 export const RecipeList = () => {
   const [query, setQuery] = useQueryParams({
     page: NumberParam,
+    q: StringParam,
   })
   const page = query.page ?? 1
   const { data: recipeList } = useRecipeList({
     _page: page,
+    q: query.q,
   })
+
+  const [searchQuery, setSearchQuery] = useState('')
 
   if (!recipeList) return null
 
   return (
-    <div className="flex h-full flex-col gap-4 p-6">
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2  xl:grid-cols-3">
-        {recipeList.map((recipe) => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
-        ))}
+    <div className="flex h-screen w-full bg-white">
+      <div className="w-64 shrink-0 border-r-2 bg-orange-200 p-6">
+        <div className="flex h-full flex-col justify-between">
+          <div className="flex flex-col gap-4">
+            <div>
+              <Label>Search</Label>
+              <Input
+                placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value)
+                }}
+              />
+            </div>
+          </div>
+
+          <Button
+            onClick={() => {
+              setQuery({ q: searchQuery })
+            }}
+          >
+            Apply
+          </Button>
+        </div>
       </div>
-      <div className="flex justify-between">
-        <Button
-          onClick={() => setQuery({ page: page - 1 })}
-          disabled={page === 1}
-        >
-          Prev
-        </Button>
-        <Button
-          onClick={() => setQuery({ page: page + 1 })}
-          disabled={recipeList.length < 10}
-        >
-          Next
-        </Button>
+
+      <div className="flex size-full flex-col gap-4 p-6">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+          {recipeList.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} />
+          ))}
+        </div>
+        <div className="flex justify-between">
+          <Button
+            onClick={() => setQuery({ page: page - 1 })}
+            disabled={page === 1}
+          >
+            Prev
+          </Button>
+          <Button
+            onClick={() => setQuery({ page: page + 1 })}
+            disabled={recipeList.length < 10}
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   )
