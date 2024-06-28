@@ -1,116 +1,74 @@
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import { NumberParam, StringParam, useQueryParams } from 'use-query-params'
-import { Button } from '../../components/button'
-import { Combobox } from '../../components/combobox'
-import { Input } from '../../components/input'
-import { Label } from '../../components/label'
-import { cn } from '../../utils'
+import { Button } from '../../../components/button'
+import { Combobox } from '../../../components/combobox'
+import { Input } from '../../../components/input'
+import { Label } from '../../../components/label'
+import { cn } from '../../../utils'
 import {
   useCuisineList,
   useDietList,
   useDifficultyList,
   useRecipeList,
-} from './recipe.queries'
-import { Recipe } from './recipe.types'
+} from '../recipe.queries'
+import { Recipe } from '../recipe.types'
+import { useRecipeListPaginationAndFilters } from './recipeList.hooks'
 
 export const RecipeList = () => {
-  const [query, setQuery] = useQueryParams({
-    page: NumberParam,
-    difficultyId: StringParam,
-    cuisineId: StringParam,
-    dietId: StringParam,
-    q: StringParam,
-  })
-  const page = query.page ?? 1
+  const { filters, clearFilters, setFilter, incrementPage, decrementPage } =
+    useRecipeListPaginationAndFilters()
+
   const { data: recipeList } = useRecipeList({
-    _page: page,
-    difficultyId: query.difficultyId,
-    cuisineId: query.cuisineId,
-    dietId: query.dietId,
-    q: query.q,
+    _page: filters.page,
+    difficultyId: filters.difficultyId,
+    cuisineId: filters.cuisineId,
+    dietId: filters.dietId,
+    q: filters.q,
   })
 
   return (
     <div className="flex h-screen w-full bg-white">
-      <div className="w-64 shrink-0 border-r-2 bg-orange-50 p-6 shadow-inner">
+      <div className="w-72 shrink-0 border-r-2 bg-orange-50 p-6 shadow-inner">
         <div className="flex h-full flex-col justify-between">
           <div className="flex flex-col gap-4">
             <div>
               <Label>Search</Label>
               <Input
                 placeholder="Search"
-                value={query.q}
-                onChange={(e) => {
-                  const value = e.target.value
-                  if (value === '') {
-                    setQuery({ q: undefined })
-                    return
-                  }
-                  setQuery({ q: e.target.value })
-                }}
+                value={filters.q}
+                onChange={(e) => setFilter('q', e.target.value)}
               />
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
               <Label>Difficulty</Label>
               <DifficultySelectableBadges
-                value={query.difficultyId}
-                setValue={(value) => {
-                  if (value === '') {
-                    setQuery({ difficultyId: undefined })
-                    return
-                  }
-                  setQuery({ difficultyId: value })
-                }}
+                value={filters.difficultyId}
+                setValue={(value) => setFilter('difficultyId', value)}
               />
             </div>
 
-            <div>
+            <div className="flex flex-col gap-2">
               <Label>Cuisine</Label>
               <CuisineSelector
-                cuisineId={query.cuisineId}
-                setCuisineId={(value) => {
-                  if (value === '') {
-                    setQuery({ cuisineId: undefined })
-                    return
-                  }
-                  setQuery({ cuisineId: value })
-                }}
+                cuisineId={filters.cuisineId}
+                setCuisineId={(value) => setFilter('cuisineId', value)}
               />
             </div>
 
-            <div>
+            <div className="flex flex-col gap-2">
               <Label>Diet</Label>
               <DietSelector
-                dietId={query.dietId}
-                setDietId={(value) => {
-                  if (value === '') {
-                    setQuery({ dietId: undefined })
-                    return
-                  }
-                  setQuery({ dietId: value })
-                }}
+                dietId={filters.dietId}
+                setDietId={(value) => setFilter('dietId', value)}
               />
             </div>
 
-            <Button
-              onClick={() => {
-                setQuery({
-                  page: query.page ?? 1,
-                  cuisineId: undefined,
-                  dietId: undefined,
-                  difficultyId: undefined,
-                  q: undefined,
-                })
-              }}
-            >
-              Clear all
-            </Button>
+            <Button onClick={() => clearFilters()}>Clear all</Button>
           </div>
         </div>
       </div>
 
       {recipeList && (
-        <div className="flex size-full flex-col gap-4 p-6">
+        <div className="flex size-full flex-col gap-4 overflow-y-scroll p-6">
           {recipeList.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-4">
               <div className="text-center text-xl font-bold">
@@ -119,18 +77,7 @@ export const RecipeList = () => {
               <div className="text-center text-sm text-gray-600">
                 No recipe found with the current filter.
               </div>
-              <Button
-                onClick={() => {
-                  setQuery(
-                    {
-                      page: query.page ?? 1,
-                    },
-                    'replace'
-                  )
-                }}
-              >
-                Reset
-              </Button>
+              <Button onClick={() => clearFilters()}>Reset</Button>
             </div>
           ) : (
             <>
@@ -141,13 +88,13 @@ export const RecipeList = () => {
               </div>
               <div className="flex justify-between">
                 <Button
-                  onClick={() => setQuery({ page: page - 1 })}
-                  disabled={page === 1}
+                  onClick={() => decrementPage()}
+                  disabled={filters.page === 1}
                 >
                   Prev
                 </Button>
                 <Button
-                  onClick={() => setQuery({ page: page + 1 })}
+                  onClick={() => incrementPage()}
                   disabled={recipeList.length < 10}
                 >
                   Next

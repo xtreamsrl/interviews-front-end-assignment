@@ -30,7 +30,7 @@ export const Combobox = ({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-[238px] justify-between"
         >
           {value
             ? options.find((o) => o.value === value)?.label
@@ -38,7 +38,7 @@ export const Combobox = ({
           <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-[238px] p-0">
         <Command>
           <CommandInput placeholder="Search option..." />
           <CommandList>
