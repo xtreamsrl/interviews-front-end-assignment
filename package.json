@@ -1,0 +1,21 @@
+{
+  "name": "frontend-assignment",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install cd server && npm install && cd .. && cd ui && npm install",
+    "start:all": "concurrently \"cd ui && npm run dev\" \"cd server && npm run start\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "description": "<!--- Hi! We're happy you opened this file, not everyone does! To let us know you did, paste a capybara picture in the How to Run section 😊 These will be extra points for you! -->",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cd": "^0.3.3",
+    "server": "^1.0.39"
+  }
+}

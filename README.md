@@ -29,11 +29,11 @@ written out. Please, write there instructions on how to run your code: we will u
 
 Your work will be assessed according to several criteria. As an example, these include:
 
-* Code quality
-* Design Patterns
-* Project Structure
-* Work quality (commits, branches, workflow, tests, ...)
-* Provided Documentation
+- Code quality
+- Design Patterns
+- Project Structure
+- Work quality (commits, branches, workflow, tests, ...)
+- Provided Documentation
 
 #### A Friendly Reminder:
 
@@ -94,27 +94,43 @@ Design a form that allows users to add new recipes by providing details such as 
 instructions, cuisine type, and dietary preference and an image.
 
 ### Challenge #4: Recipe Details and Comments
+
 Develop a recipe details page where users can view the full recipe, including ingredients, instructions, and user
 comments. Enable users to add comments and rate the recipe, displaying the average rating and updating the list of
 comments.
 
 ## How to run
 
-...
+Install both server and ui dependencies:
+
+```
+npm run install:all
+```
+
+Start both server and ui:
+
+```
+npm run start:all
+```
+
+![Here's your capibara](./capibara.jpeg)
 
 ## Solution
 
 ### Assumptions and decisions
+
 1. The project was started as an SPA for brevity reasons. In a real world scenario it would be necessary to ask if indexing and first load time are important to the target audience. For the sake of the project we assume they aren't.
 2. Some entity as the difficulty are treated as an actual entity, while in a real world scenario they would probably be implemented as a enum, making the API call to fetch them superfluous.
 3. React query is used to manage data fetching, but for the sake of simplicity the components don't visibly handle the loading and error states.
-3. While calling the API to fetch the recipe list the `expand` property is hardcoded to simulate what would be done with a GraphQL api
-4. In filtering the search component hasn't been debounced for the sake of simplicity
-5. The file upload component is not generic, also for the sake of simplicity
-6. The `/recipes` post endpoint on the server was edited, as the JSON schema said the `ingredients` property was an array of string, while the actual code treated it as a string to then split on the server. The endpoint has been changed to make it conform to the API spec.
+4. While calling the API to fetch the recipe list the `expand` property is hardcoded to simulate what would be done with a GraphQL api
+5. In filtering the search component hasn't been debounced for the sake of simplicity
+6. The file upload component is not generic, also for the sake of simplicity
+7. The `/recipes` post endpoint on the server was edited, as the JSON schema said the `ingredients` property was an array of string, while the actual code treated it as a string to then split on the server. The endpoint has been changed to make it conform to the API spec.
 
 ### Project Architecture
+
 The React application is structured as follows:
+
 ```
 - src
   - components
