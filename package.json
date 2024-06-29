@@ -2,7 +2,7 @@
   "name": "frontend-assignment",
   "private": true,
   "scripts": {
-    "install:all": "npm install cd server && npm install && cd .. && cd ui && npm install",
+    "install:all": "npm install && cd ui && npm install",
     "start:all": "concurrently \"cd ui && npm run dev\" \"cd server && npm run start\""
   },
   "devDependencies": {
