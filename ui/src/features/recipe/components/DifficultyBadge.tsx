@@ -1,5 +1,5 @@
-import { cn } from '../../../../utils'
-import { Recipe } from '../../recipe.types'
+import { cn } from '../../../utils'
+import { Recipe } from '../recipe.types'
 
 const difficultyColors: { [key: string]: string } = {
   Easy: 'bg-green-300',

@@ -73,4 +73,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #root {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
 }

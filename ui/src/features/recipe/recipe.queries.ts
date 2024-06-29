@@ -1,6 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { AxiosResponse } from 'axios'
 import { axiosInstance } from '../../config/axios'
+import { queryClient } from '../../config/react-query'
 import { flatObjToSerializableUrlParams } from '../../utils'
 import {
   CuisineListResponse,
@@ -77,3 +78,23 @@ export const useDietList = () =>
     queryKey: ['diet-list'],
     queryFn: () => getDietList(),
   })
+
+const createRecipe = async (data: FormData) => {
+  const response = await axiosInstance.post('/recipes', data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+  return response.data
+}
+
+export const useRecipeCreateMutation = () => {
+  return useMutation({
+    mutationFn: createRecipe,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['recipe-list'],
+      })
+    },
+  })
+}

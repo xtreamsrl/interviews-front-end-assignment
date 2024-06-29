@@ -1,17 +1,18 @@
+import { Button } from '@/components/button'
+import { Combobox } from '@/components/combobox'
+import { Input } from '@/components/input'
+import { Label } from '@/components/label'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import { Button } from '../../../components/button'
-import { Combobox } from '../../../components/combobox'
-import { Input } from '../../../components/input'
-import { Label } from '../../../components/label'
+import { Link } from 'react-router-dom'
+import { DifficultyBadge } from './components/DifficultyBadge'
+import { RecipeCard } from './components/RecipeCard'
+import { useRecipeListPaginationAndFilters } from './recipe.hooks'
 import {
   useCuisineList,
   useDietList,
   useDifficultyList,
   useRecipeList,
-} from '../recipe.queries'
-import { DifficultyBadge } from './components/DifficultyBadge'
-import { RecipeCard } from './components/RecipeCard'
-import { useRecipeListPaginationAndFilters } from './recipeList.hooks'
+} from './recipe.queries'
 
 export const RecipeList = () => {
   const { filters, clearFilters, setFilter, incrementPage, decrementPage } =
@@ -59,8 +60,13 @@ export const RecipeList = () => {
                 setDietId={(value) => setFilter('dietId', value)}
               />
             </div>
-            <Button onClick={() => clearFilters()}>Clear all</Button>
+            <Button variant="outline" onClick={() => clearFilters()}>
+              Clear filters
+            </Button>
           </div>
+          <Button asChild variant="destructive">
+            <Link to="/new">New Recipe</Link>
+          </Button>
         </div>
       </div>
 

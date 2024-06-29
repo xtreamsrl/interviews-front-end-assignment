@@ -42,7 +42,7 @@ app.post('/recipes', upload.single('image'), (req, res) => {
   const newRecipe = {
     id: String(Date.now()), // Generate a simple unique ID
     name,
-    ingredients: ingredients ? ingredients.split(',') : [],
+    ingredients: ingredients ?? [],
     instructions,
     cuisineId,
     dietId,
